@@ -5,7 +5,8 @@ using System.Web.Mvc;
 using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.Owin;
 using Microsoft.Owin.Security;
-using LeagueOfLegendsFindTeamApp.Models;
+using LeagueOfLegendsFindTeamApp.Models.DatabaseModels;
+using LeagueOfLegendsFindTeamApp.Models.ViewModels;
 
 namespace LeagueOfLegendsFindTeamApp.Controllers
 {

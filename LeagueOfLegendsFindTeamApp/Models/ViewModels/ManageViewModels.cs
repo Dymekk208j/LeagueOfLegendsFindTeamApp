@@ -3,7 +3,7 @@ using System.ComponentModel.DataAnnotations;
 using Microsoft.AspNet.Identity;
 using Microsoft.Owin.Security;
 
-namespace LeagueOfLegendsFindTeamApp.Models
+namespace LeagueOfLegendsFindTeamApp.Models.ViewModels
 {
     public class IndexViewModel
     {

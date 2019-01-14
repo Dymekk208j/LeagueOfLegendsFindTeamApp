@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 
-namespace LeagueOfLegendsFindTeamApp.Models
+namespace LeagueOfLegendsFindTeamApp.Models.ViewModels
 {
     public class ExternalLoginConfirmationViewModel
     {
