@@ -79,6 +79,9 @@ namespace LeagueOfLegendsFindTeamApp.Models.ViewModels
         [Display(Name = "Confirm password")]
         [Compare("Password", ErrorMessage = "The password and confirmation password do not match.")]
         public string ConfirmPassword { get; set; }
+
+        [Display(Name = "Login")]
+        public string Username { get; set; }
     }
 
     public class ResetPasswordViewModel

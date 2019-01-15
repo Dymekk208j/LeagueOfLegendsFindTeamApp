@@ -13,8 +13,6 @@ namespace LeagueOfLegendsFindTeamApp.Models.DatabaseModels.DatabaseContext
 
             ApplicationUser user = new ApplicationUser
             {
-                FirstName = "Damian",
-                LastName = "Dziura",
                 UserName = "Dymek",
                 Blocked = false,
                 Email = "Kontakt@damiandziura.pl"

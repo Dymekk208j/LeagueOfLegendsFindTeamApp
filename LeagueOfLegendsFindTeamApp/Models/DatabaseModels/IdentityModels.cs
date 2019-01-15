@@ -17,11 +17,7 @@ namespace LeagueOfLegendsFindTeamApp.Models.DatabaseModels
             // Add custom user claims here
             return userIdentity;
         }
-
-        [Display(Name = "Imię")]
-        public string FirstName { get; set; }
-        [Display(Name = "Nazwisko")]
-        public string LastName { get; set; }
+   
         [Display(Name = "Zablokowany")]
         public bool Blocked { get; set; }
 
