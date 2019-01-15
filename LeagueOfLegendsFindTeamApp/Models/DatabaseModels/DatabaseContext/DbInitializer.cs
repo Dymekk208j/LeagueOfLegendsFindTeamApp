@@ -18,7 +18,7 @@ namespace LeagueOfLegendsFindTeamApp.Models.DatabaseModels.DatabaseContext
                 Email = "Kontakt@damiandziura.pl"
             };
 
-            userManager.Create(user, "Damian13");
+            userManager.Create(user, "Damian13!");
 
             RoleManager<IdentityRole> roleManager = new RoleManager<IdentityRole>(new RoleStore<IdentityRole>(context));
             if (!roleManager.RoleExists("Admin"))
