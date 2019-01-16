@@ -4,7 +4,15 @@
             <img src="~/Content/images/icon/avatar-big-01.jpg" alt="John Doe" />
         </div>
         <h4 class="name">@Html.Name(User.Identity.Name)</h4>
-        <a href="#">Sign out</a>
+        @if (Request.IsAuthenticated)
+        {
+            using (Html.BeginForm("LogOff", "Account", FormMethod.Post, new { id = "logoutForm" }))
+            {
+                @Html.AntiForgeryToken()
+
+        <button type="submit" class="btn btn-link">Sign out</button>
+            }
+        }
     </div>
     <nav class="navbar-sidebar2">
         <ul class="list-unstyled navbar__list">
