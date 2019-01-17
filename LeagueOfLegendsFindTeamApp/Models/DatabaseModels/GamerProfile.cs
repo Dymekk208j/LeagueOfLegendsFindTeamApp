@@ -5,6 +5,7 @@ namespace LeagueOfLegendsFindTeamApp.Models.DatabaseModels
     public class GamerProfile
     {
         public int GamerProfileId { get; set; }
+        public Image Portrait { get; set; }
         public string InGameName { get; set; }
         public Position PrimaryPosition { get; set; }
         public Position SecondaryPosition { get; set; }

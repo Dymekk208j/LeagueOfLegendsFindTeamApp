@@ -6,6 +6,7 @@ namespace LeagueOfLegendsFindTeamApp.Models.DatabaseModels
     {
         public int TeamId { get; set; }
         public string Name { get; set; }
+        public Image Logo { get; set; }
         public GamerProfile Leader { get; set; }
         public IEnumerable<GamerProfile> Members { get; set; }
         public IEnumerable<QueueType> QueueTypes { get; set; }
