@@ -1,4 +1,5 @@
 ﻿using System.ComponentModel.DataAnnotations;
+using System.Data.Entity;
 using System.Linq;
 using System.Security.Claims;
 using System.Threading.Tasks;
@@ -41,7 +42,23 @@ namespace LeagueOfLegendsFindTeamApp.Models.DatabaseModels
             return new ApplicationDbContext();
         }
 
-        //public virtual DbSet<Contact> Contacts { get; set; }
+        public virtual DbSet<Champion> Champions { get; set; }
+        public virtual DbSet<Contact> Contacts { get; set; }
+        public virtual DbSet<GamerOffer> GamerOffers { get; set; }
+        public virtual DbSet<GamerProfile> GamerProfiles { get; set; }
+        public virtual DbSet<Image> Images { get; set; }
+        public virtual DbSet<JoinRequest> JoinRequests { get; set; }
+        public virtual DbSet<Language> Languages { get; set; }
+        public virtual DbSet<League> Leagues { get; set; }
+        public virtual DbSet<Person> Persons { get; set; }
+        public virtual DbSet<Position> Positions { get; set; }
+        public virtual DbSet<QueueType> QueueTypes { get; set; }
+        public virtual DbSet<Region> Regions { get; set; }
+        public virtual DbSet<Team> Teams { get; set; }
+        public virtual DbSet<TeamInvitation> TeamInvitations { get; set; }
+        public virtual DbSet<TeamOffer> TeamOffers { get; set; }
+        public virtual DbSet<TeamType> TeamTypes { get; set; }
+
 
         public new virtual int SaveChanges()
         {
