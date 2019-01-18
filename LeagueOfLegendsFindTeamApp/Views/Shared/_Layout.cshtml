@@ -8,8 +8,10 @@
     <meta name="author" content="Hau Nguyen">
     <meta name="keywords" content="au theme template">
 
+
     <!-- Title Page-->
     <title>@ViewBag.Title - My ASP.NET Application</title>
+
 
     <!-- Fontfaces CSS-->
     <link href="~/Content/font-face.css" rel="stylesheet" media="all">
@@ -32,6 +34,9 @@
 
     <!-- Main CSS-->
     <link href="~/Content/theme.css" rel="stylesheet" media="all">
+
+    @RenderSection("AdditionalCss", false)
+
 </head>
 <body class="animation">
     
@@ -184,13 +189,13 @@
                     </div>
                 </div>
             </section>
-            <section>
+            <section style="min-height: 73vh">
                 @RenderBody()
             </section>
             <section>
-                <div class="container-fluid">
+                <div class="container-fluid border-bottom">
                     <div class="row">
-                        <div class="col-md-12">
+                        <div class="col-md-12 mb-0">
                             <div class="copyright">
                                 <p>Copyright © 2018 Colorlib. All rights reserved. Template by <a href="https://colorlib.com">Colorlib</a>.</p>
                             </div>

@@ -1,0 +1,31 @@
+﻿@section AdditionalCss
+{
+    <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.1.1/css/bootstrap.css">
+    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.19/css/dataTables.bootstrap4.min.css">
+}
+
+
+<div class="col-lg-12">
+    <div class="card mt-3" style="min-height: 500px">
+        <div class="card-header">
+            <strong>Languages</strong> management
+        </div>
+        <div class="card-body">
+            @{
+                Html.RenderPartial("_TablePartialView");
+            }
+        </div>
+    </div>
+</div>
+
+@section scripts
+{
+ 
+    <script src="~/Scripts/jquery.dataTables.js"></script>
+    <script src="https://cdn.datatables.net/1.10.18/js/dataTables.bootstrap4.min.js"></script>
+    <script>
+        $(document).ready(function () {
+            $('#example').DataTable();
+        });
+    </script>
+}
