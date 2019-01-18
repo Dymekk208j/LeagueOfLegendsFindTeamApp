@@ -8,6 +8,17 @@ namespace LeagueOfLegendsFindTeamApp.Models.DatabaseModels.DatabaseContext
     {
         protected override void Seed(ApplicationDbContext context)
         {
+            CreateUsers(context);
+            CreateLanguages(context);
+        }
+
+        private void CreateLanguages(ApplicationDbContext context)
+        {
+            throw new System.NotImplementedException();
+        }
+
+        private void CreateUsers(ApplicationDbContext context)
+        {
             UserManager<ApplicationUser> userManager =
                 new UserManager<ApplicationUser>(new UserStore<ApplicationUser>(context));
 
