@@ -18,7 +18,7 @@ namespace LeagueOfLegendsFindTeamApp.Models.DatabaseModels
             return userIdentity;
         }
    
-        [Display(Name = "Zablokowany")]
+        [Display(Name = "Blocked")]
         public bool Blocked { get; set; }
 
         public static string GetUserName(string guid)
