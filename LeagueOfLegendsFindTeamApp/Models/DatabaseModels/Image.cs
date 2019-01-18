@@ -11,8 +11,6 @@ namespace LeagueOfLegendsFindTeamApp.Models.DatabaseModels
         [Required(ErrorMessage = "File name cannot be empty")]
         public string FileName { get; set; }
 
-        [Display(Name = "Guid")]
-        [Required(ErrorMessage = "Guid")]
-        public Guid Guid { get; set; }
+        public string Url { get; set; }
     }
 }

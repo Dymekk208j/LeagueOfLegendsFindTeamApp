@@ -11,15 +11,14 @@ namespace LeagueOfLegendsFindTeamApp.Models.DatabaseModels
         [Display(Name = "Team name")]
         [Required(ErrorMessage = "Team name cannot be empty")]
         [MinLength(5, ErrorMessage = "Team name cannot be shorter then 5 chars")]
+        [MaxLength(250)]
         [Index(IsUnique = true)]
         public string Name { get; set; }
 
         [Display(Name = "Logo")]
-        [Required(ErrorMessage = "Logo cannot be empty")]
         public Image Logo { get; set; }
 
         [Display(Name = "Team leader")]
-        [Required(ErrorMessage = "Team leader cannot be empty")]
         public GamerProfile Leader { get; set; }
 
         [Display(Name = "Members")]

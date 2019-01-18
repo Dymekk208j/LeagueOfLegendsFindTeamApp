@@ -1,4 +1,5 @@
-﻿using System.Web;
+﻿using System;
+using System.Web;
 using LeagueOfLegendsFindTeamApp.Models.DatabaseModels;
 using Microsoft.WindowsAzure.Storage;
 using Microsoft.WindowsAzure.Storage.Auth;
@@ -27,14 +28,14 @@ namespace LeagueOfLegendsFindTeamApp.Controllers
 
         public static bool RemoveIcon(Image image)
         {
-            CloudBlockBlob cBlob = IconsContainer.GetBlockBlobReference(image.Guid + image.FileName);
+            CloudBlockBlob cBlob = IconsContainer.GetBlockBlobReference(Guid.NewGuid().ToString() + image.FileName);
 
             return cBlob.DeleteIfExists();
 
         }
         public static void UploadIcon(HttpPostedFileBase file, Image image)
         {
-            CloudBlockBlob cBlob = IconsContainer.GetBlockBlobReference(image.Guid + image.FileName);
+            CloudBlockBlob cBlob = IconsContainer.GetBlockBlobReference(Guid.NewGuid().ToString() + image.FileName);
             cBlob.Properties.ContentType = file.ContentType;
 
 
@@ -43,16 +44,16 @@ namespace LeagueOfLegendsFindTeamApp.Controllers
 
         public static bool RemoveScreenshot(Image image)
         {
-            CloudBlockBlob cBlob = ProjectImages.GetBlockBlobReference(image.Guid + image.FileName);
+            CloudBlockBlob cBlob = ProjectImages.GetBlockBlobReference(Guid.NewGuid().ToString() + image.FileName);
 
             return cBlob.DeleteIfExists();
 
         }
         public static void UploadScreenshot(HttpPostedFileBase file, Image image)
         {
-            CloudBlockBlob cBlob = ProjectImages.GetBlockBlobReference(image.Guid + image.FileName);
+            CloudBlockBlob cBlob = ProjectImages.GetBlockBlobReference(Guid.NewGuid().ToString() + image.FileName);
             cBlob.Properties.ContentType = file.ContentType;
-
+            //TODO: Nie bedzie to dzialac, nie zwraca w zaden sposob linku i nie jestem w stanie wygenerowac linku dlatego ze guid jest generowany dopiero tutaj - do poprawy
 
             cBlob.UploadFromStream(file.InputStream);
         }

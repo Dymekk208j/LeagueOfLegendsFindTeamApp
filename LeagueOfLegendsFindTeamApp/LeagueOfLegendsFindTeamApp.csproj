@@ -239,6 +239,14 @@
     <Compile Include="Migrations\201901151610198_Initial.Designer.cs">
       <DependentUpon>201901151610198_Initial.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201901181754512_NewModels.cs" />
+    <Compile Include="Migrations\201901181754512_NewModels.Designer.cs">
+      <DependentUpon>201901181754512_NewModels.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201901181912292_NewModels2.cs" />
+    <Compile Include="Migrations\201901181912292_NewModels2.Designer.cs">
+      <DependentUpon>201901181912292_NewModels2.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\DatabaseModels\Champion.cs" />
     <Compile Include="Models\DatabaseModels\Contact.cs" />
@@ -647,6 +655,12 @@
   <ItemGroup>
     <EmbeddedResource Include="Migrations\201901151610198_Initial.resx">
       <DependentUpon>201901151610198_Initial.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201901181754512_NewModels.resx">
+      <DependentUpon>201901181754512_NewModels.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201901181912292_NewModels2.resx">
+      <DependentUpon>201901181912292_NewModels2.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

@@ -21,7 +21,6 @@ namespace LeagueOfLegendsFindTeamApp.Models.DatabaseModels
         public Position PrimaryPosition { get; set; }
 
         [Display(Name = "Secondary position")]
-        [Required(ErrorMessage = "Secondary position cannot be empty")]
         public Position SecondaryPosition { get; set; }
 
         [Display(Name = "Account region")]

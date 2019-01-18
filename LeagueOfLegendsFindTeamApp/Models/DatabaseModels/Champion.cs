@@ -11,7 +11,6 @@ namespace LeagueOfLegendsFindTeamApp.Models.DatabaseModels
         public Image Portrait { get; set; }
 
         [Display(Name = "Small image")]
-        [Required(ErrorMessage = "Image cannot be empty")]
         public Image SmallImage { get; set; }
 
         [Display(Name = "Name")]
