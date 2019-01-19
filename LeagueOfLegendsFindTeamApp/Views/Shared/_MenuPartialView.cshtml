@@ -44,35 +44,36 @@
             </li>
             @if (User.IsInRole("Admin"))
             {
-            <li class="has-sub">
-                <a class="js-arrow" href="#">
-                    <i class="zmdi zmdi-settings"></i>Administrator menu
-                    <span class="arrow">
-                        <i class="fas fa-angle-down"></i>
-                    </span>
-                </a>
-                <ul class="list-unstyled navbar__sub-list js-sub-list">
-                    <li>
-                        <a href="@Url.Action("Management", "Language")">
-                            <i class="zmdi zmdi-minus"></i>Languages
-                        </a>
-                    </li>
-                </ul>
-                <ul class="list-unstyled navbar__sub-list js-sub-list">
-                    <li>
-                        <a href="@Url.Action("Management", "QueueType")">
-                            <i class="zmdi zmdi-minus"></i>Queue types
-                        </a>
-                    </li>
-                </ul>
-                <ul class="list-unstyled navbar__sub-list js-sub-list">
-                    <li>
-                        <a href="@Url.Action("Management", "TeamType")">
-                            <i class="zmdi zmdi-minus"></i>Team types
-                        </a>
-                    </li>
-                </ul>
-            </li>
+                <li class="has-sub">
+                    <a class="js-arrow" href="#">
+                        <i class="zmdi zmdi-settings"></i>Administrator menu
+                        <span class="arrow">
+                            <i class="fas fa-angle-down"></i>
+                        </span>
+                    </a>
+                    <ul class="list-unstyled navbar__sub-list js-sub-list">
+                        <li>
+                            <a href="@Url.Action("Management", "Language")">
+                                <i class="zmdi zmdi-minus"></i>Languages
+                            </a>
+                        </li>
+                        <li>
+                            <a href="@Url.Action("Management", "QueueType")">
+                                <i class="zmdi zmdi-minus"></i>Queue types
+                            </a>
+                        </li>
+                        <li>
+                            <a href="@Url.Action("Management", "TeamType")">
+                                <i class="zmdi zmdi-minus"></i>Team types
+                            </a>
+                        </li>
+                        <li>
+                            <a href="@Url.Action("Management", "position")">
+                                <i class="zmdi zmdi-minus"></i>Positions
+                            </a>
+                        </li>
+                    </ul>
+                </li>
             }
         </ul>
     </nav>

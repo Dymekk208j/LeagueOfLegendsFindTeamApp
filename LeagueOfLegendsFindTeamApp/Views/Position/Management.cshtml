@@ -1,0 +1,72 @@
+﻿@section AdditionalCss
+{
+    <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.1.1/css/bootstrap.css">
+    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.19/css/dataTables.bootstrap4.min.css">
+}
+
+<div class="col-lg-12">
+    <div class="card mt-3" style="min-height: 500px" id="PositionsCard">
+        @Html.Action("GetTable", "Position")
+    </div>
+</div>
+
+@section scripts
+{
+    <script src="~/Scripts/jquery-3.3.1.js"></script>
+    <script src="~/Scripts/jquery.dataTables.js"></script>
+    <script src="https://cdn.datatables.net/1.10.18/js/dataTables.bootstrap4.min.js"></script>
+
+
+    <script src="~/Scripts/jquery.unobtrusive-ajax.js"></script>
+    <script src="~/scripts/jquery.validate.min.js" type="text/javascript"></script>
+    <script src="~/scripts/jquery.validate.unobtrusive.min.js" type="text/javascript"></script>
+
+    <script>
+        function GoToCreateForm() {
+            $.ajax({url: "@Url.Action("GetCreateNewPartialView", "Position")", success: function(result){
+                $("#PositionsCard").html(result);
+            }});
+        }
+    </script>
+
+    <script>
+        function GoToTableForm() {
+            $.ajax({url: "@Url.Action("GetTable", "Position")", success: function(result){
+                $("#PositionsCard").html(result);
+                $('#PositionsTable').DataTable();
+            }});
+        }
+    </script>
+
+    <script>
+        LoadTable();
+
+        function LoadTable() {
+            $('#PositionsTable').DataTable();
+        }
+    </script>
+
+
+    <script>
+        function GoToModificationForm(id) {
+            $.ajax(
+                {
+                    url: "@Url.Action("GetModificationPartialView", "Position")",
+                    data: { positionId: id },
+                    success: function (result) {
+                        $("#PositionsCard").html(result);
+                    }});
+        }
+
+        function RemovePosition(id) {
+            $.ajax(
+                {
+                    url: "@Url.Action("RemovePosition", "Position")",
+                    data: { positionId: id },
+                    success: function (result) {
+                        $("#PositionsCard").html(result);
+                        $('#PositionsTable').DataTable();
+                    }});
+        }
+    </script>
+}
