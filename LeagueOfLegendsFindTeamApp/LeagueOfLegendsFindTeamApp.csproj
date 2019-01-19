@@ -235,6 +235,7 @@
     <Compile Include="Controllers\ManageController.cs" />
     <Compile Include="Controllers\PositionController.cs" />
     <Compile Include="Controllers\QueueTypeController.cs" />
+    <Compile Include="Controllers\RegionController.cs" />
     <Compile Include="Controllers\TeamTypeController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -277,6 +278,7 @@
     <Compile Include="Repository\LanguageRepository.cs" />
     <Compile Include="Repository\PositionRepository.cs" />
     <Compile Include="Repository\QueueTypeRepository.cs" />
+    <Compile Include="Repository\RegionRepository.cs" />
     <Compile Include="Repository\TeamTypeRepository.cs" />
     <Compile Include="Startup.cs" />
   </ItemGroup>
@@ -665,6 +667,10 @@
     <Content Include="Views\Position\_CreateNewPartialView.cshtml" />
     <Content Include="Views\Position\_ModificationPartialView.cshtml" />
     <Content Include="Views\Position\_TablePartialView.cshtml" />
+    <Content Include="Views\Region\_CreateNewPartialView.cshtml" />
+    <Content Include="Views\Region\_ModificationPartialView.cshtml" />
+    <Content Include="Views\Region\_TablePartialView.cshtml" />
+    <Content Include="Views\Region\Management.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
