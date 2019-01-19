@@ -234,6 +234,7 @@
     <Compile Include="Controllers\LanguageController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
     <Compile Include="Controllers\QueueTypeController.cs" />
+    <Compile Include="Controllers\TeamTypeController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -274,6 +275,7 @@
     <Compile Include="Repository\IRepository.cs" />
     <Compile Include="Repository\LanguageRepository.cs" />
     <Compile Include="Repository\QueueTypeRepository.cs" />
+    <Compile Include="Repository\TeamTypeRepository.cs" />
     <Compile Include="Startup.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -653,6 +655,10 @@
     <Content Include="Views\QueueType\_ModificationPartialView.cshtml" />
     <Content Include="Views\QueueType\_TablePartialView.cshtml" />
     <Content Include="Views\QueueType\Management.cshtml" />
+    <Content Include="Views\TeamType\Management.cshtml" />
+    <Content Include="Views\TeamType\_TablePartialView.cshtml" />
+    <Content Include="Views\TeamType\_ModificationPartialView.cshtml" />
+    <Content Include="Views\TeamType\_CreateNewPartialView.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
