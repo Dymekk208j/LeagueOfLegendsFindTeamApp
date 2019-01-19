@@ -14,9 +14,7 @@ namespace LeagueOfLegendsFindTeamApp.Controllers
         {
             _repository = repository;
         }
-
-
-        // GET: Language
+        
         [HttpGet]
         public ActionResult Management()
         {
@@ -42,14 +40,45 @@ namespace LeagueOfLegendsFindTeamApp.Controllers
                 }
                 else return PartialView("_CreateNewPartialView", language);
             }
-            IEnumerable<Language> languages = _repository.GetAll();
-            return PartialView("_TablePartialView", languages);
+         
+            return PartialView("_TablePartialView", _repository.GetAll());
         }
 
         [HttpGet]
         public ActionResult GetCreateNewPartialView()
         {
             return PartialView("_CreateNewPartialView", new Language());
+        }
+
+        [HttpGet]
+        public ActionResult GetModificationPartialView(int languageId)
+        {
+            Language language = _repository.Get(languageId);
+            
+            return PartialView("_ModificationPartialView", language);
+        }
+
+        [HttpPost]
+        public ActionResult ModifyLanguage(Language language)
+        {
+            if (Request.IsAjaxRequest())
+            {
+                if (ModelState.IsValid)
+                {
+                    _repository.Update(language);
+                }
+                else return PartialView("_ModificationPartialView", language);
+            }
+          
+            return PartialView("_TablePartialView", _repository.GetAll());
+        }
+
+        [HttpGet]
+        public ActionResult RemoveLanguage(int languageId)
+        {
+           _repository.Remove(languageId);
+
+            return PartialView("_TablePartialView", _repository.GetAll());
         }
     }
 }

@@ -17,7 +17,7 @@
         <tbody>
         @foreach (var language in Model)
         {
-            <tr>
+            <tr onclick="GoToModificationForm(@Html.Raw(language.LanguageId))">
                 <td class="pl-2">@Html.Name(language.LanguageId.ToString() + ". ")</td>
                 <td class="pl-2">@Html.Name(language.Name)</td>
             </tr>

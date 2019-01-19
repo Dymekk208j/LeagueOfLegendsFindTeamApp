@@ -646,6 +646,7 @@
     <Content Include="Views\Language\Management.cshtml" />
     <Content Include="Views\Language\_TablePartialView.cshtml" />
     <Content Include="Views\Language\_CreateNewPartialView.cshtml" />
+    <Content Include="Views\Language\_ModificationPartialView.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

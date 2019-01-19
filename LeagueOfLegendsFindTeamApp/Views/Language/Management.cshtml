@@ -12,7 +12,7 @@
 
 @section scripts
 {
-<script src="~/Scripts/jquery-3.3.1.js"></script>
+    <script src="~/Scripts/jquery-3.3.1.js"></script>
     <script src="~/Scripts/jquery.dataTables.js"></script>
     <script src="https://cdn.datatables.net/1.10.18/js/dataTables.bootstrap4.min.js"></script>
 
@@ -43,6 +43,30 @@
 
         function LoadTable() {
             $('#LanguageTable').DataTable();
+        }
+    </script>
+
+
+    <script>
+        function GoToModificationForm(id) {
+            $.ajax(
+                {
+                    url: "@Url.Action("GetModificationPartialView", "Language")",
+                    data: { languageId: id },
+                    success: function (result) {
+                        $("#LanguageCard").html(result);
+                    }});
+        }
+
+        function RemoveLanguage(id) {
+            $.ajax(
+                {
+                    url: "@Url.Action("RemoveLanguage", "Language")",
+                    data: { languageId: id },
+                    success: function (result) {
+                        $("#LanguageCard").html(result);
+                        $('#LanguageTable').DataTable();
+                    }});
         }
     </script>
 }

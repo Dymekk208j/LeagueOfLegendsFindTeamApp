@@ -48,6 +48,21 @@ namespace LeagueOfLegendsFindTeamApp.Repository
             return Context.SaveChanges() > 0;
         }
 
+        public bool Remove(int id)
+        {
+            try
+            {
+                Language obj = Context.Languages.First(a => a.LanguageId == id);
+                Context.Languages.Remove(obj);
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e);
+                return false;
+            }
+            return Context.SaveChanges() > 0;
+        }
+
         public bool Update(Language entity)
         {
             try

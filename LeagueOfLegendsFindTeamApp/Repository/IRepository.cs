@@ -8,6 +8,7 @@ namespace LeagueOfLegendsFindTeamApp.Repository
         TEnt Get(TPk id);
         bool Add(TEnt entity);
         bool Remove(TEnt entity);
+        bool Remove(TPk id);
         bool Update(TEnt entity);
     }
 }
