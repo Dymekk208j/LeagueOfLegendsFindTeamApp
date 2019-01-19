@@ -4,28 +4,45 @@
     <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.19/css/dataTables.bootstrap4.min.css">
 }
 
-
 <div class="col-lg-12">
-    <div class="card mt-3" style="min-height: 500px">
-        <div class="card-header">
-            <strong>Languages</strong> management
-        </div>
-        <div class="card-body">
-            @{
-                Html.RenderPartial("_TablePartialView");
-            }
-        </div>
+    <div class="card mt-3" style="min-height: 500px" id="LanguageCard">
+        @Html.Action("GetTable", "Language")
     </div>
 </div>
 
 @section scripts
 {
- 
+<script src="~/Scripts/jquery-3.3.1.js"></script>
     <script src="~/Scripts/jquery.dataTables.js"></script>
     <script src="https://cdn.datatables.net/1.10.18/js/dataTables.bootstrap4.min.js"></script>
+
+
+    <script src="~/Scripts/jquery.unobtrusive-ajax.js"></script>
+    <script src="~/scripts/jquery.validate.min.js" type="text/javascript"></script>
+    <script src="~/scripts/jquery.validate.unobtrusive.min.js" type="text/javascript"></script>
+
     <script>
-        $(document).ready(function () {
-            $('#example').DataTable();
-        });
+        function GoToCreateForm() {
+            $.ajax({url: "@Url.Action("GetCreateNewPartialView", "Language")", success: function(result){
+                $("#LanguageCard").html(result);
+            }});
+        }
+    </script>
+
+    <script>
+        function GoToTableForm() {
+            $.ajax({url: "@Url.Action("GetTable", "Language")", success: function(result){
+                $("#LanguageCard").html(result);
+                $('#LanguageTable').DataTable();
+            }});
+        }
+    </script>
+
+    <script>
+        LoadTable();
+
+        function LoadTable() {
+            $('#LanguageTable').DataTable();
+        }
     </script>
 }

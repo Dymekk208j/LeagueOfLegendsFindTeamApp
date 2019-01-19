@@ -1,6 +1,5 @@
 namespace LeagueOfLegendsFindTeamApp.Migrations
 {
-    using System;
     using System.Data.Entity.Migrations;
     
     public partial class NewModels2 : DbMigration

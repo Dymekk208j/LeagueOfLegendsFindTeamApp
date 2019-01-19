@@ -2,14 +2,14 @@ namespace LeagueOfLegendsFindTeamApp.Migrations
 {
     using System.Data.Entity.Migrations;
 
-    internal sealed class Configuration : DbMigrationsConfiguration<LeagueOfLegendsFindTeamApp.Models.DatabaseModels.ApplicationDbContext>
+    internal sealed class Configuration : DbMigrationsConfiguration<Models.DatabaseModels.ApplicationDbContext>
     {
         public Configuration()
         {
             AutomaticMigrationsEnabled = false;
         }
 
-        protected override void Seed(LeagueOfLegendsFindTeamApp.Models.DatabaseModels.ApplicationDbContext context)
+        protected override void Seed(Models.DatabaseModels.ApplicationDbContext context)
         {
             //  This method will be called after migrating to the latest version.
 

@@ -92,7 +92,7 @@ namespace LeagueOfLegendsFindTeamApp.Controllers
                 }
                 else
                 {
-                    ModelState.AddModelError("", "Invalid login attempt.");
+                    ModelState.AddModelError("", @"Invalid login attempt.");
                 }
             }
 
@@ -136,7 +136,7 @@ namespace LeagueOfLegendsFindTeamApp.Controllers
                 case SignInStatus.LockedOut:
                     return View("Lockout");
                 default:
-                    ModelState.AddModelError("", "Invalid code.");
+                    ModelState.AddModelError("", @"Invalid code.");
                     return View(model);
             }
         }
