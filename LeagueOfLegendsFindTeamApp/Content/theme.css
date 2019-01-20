@@ -4283,17 +4283,14 @@ section {
 /* ----- Footer ----- */
 .copyright {
     text-align: center;
-    padding: 10px 0;
-    padding-top: 20px;
+    background-color: #fff;
 }
 
-.copyright p {
-    font-size: 10px;
-    color: #666;
-    line-height: -webkit-calc(24/14);
-    line-height: -moz-calc(24/14);
-    line-height: calc(24/14);
-}
+    .copyright p {
+        font-size: 8px;
+        color: #666;
+        margin: 0 0 0 0;
+    }
 
 /* ----- Breadcrumb ----- */
 .au-breadcrumb {

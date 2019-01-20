@@ -46,35 +46,40 @@
             {
                 <li class="has-sub">
                     <a class="js-arrow" href="#">
-                        <i class="zmdi zmdi-settings"></i>Administrator menu
+                        <i class="zmdi zmdi-settings"></i>Administration menu
                         <span class="arrow">
                             <i class="fas fa-angle-down"></i>
                         </span>
                     </a>
                     <ul class="list-unstyled navbar__sub-list js-sub-list">
                         <li>
-                            <a href="@Url.Action("Management", "Language")">
+                            <a class="pt-1 pb-1" href="@Url.Action("Management", "Language")">
                                 <i class="zmdi zmdi-minus"></i>Languages
                             </a>
                         </li>
                         <li>
-                            <a href="@Url.Action("Management", "QueueType")">
+                            <a class="pt-1 pb-1" href="@Url.Action("Management", "QueueType")">
                                 <i class="zmdi zmdi-minus"></i>Queue types
                             </a>
                         </li>
                         <li>
-                            <a href="@Url.Action("Management", "TeamType")">
+                            <a class="pt-1 pb-1" href="@Url.Action("Management", "TeamType")">
                                 <i class="zmdi zmdi-minus"></i>Team types
                             </a>
                         </li>
                         <li>
-                            <a href="@Url.Action("Management", "Position")">
+                            <a class="pt-1 pb-1" href="@Url.Action("Management", "Position")">
                                 <i class="zmdi zmdi-minus"></i>Positions
                             </a>
                         </li>
                         <li>
-                            <a href="@Url.Action("Management", "Region")">
+                            <a class="pt-1 pb-1" href="@Url.Action("Management", "Region")">
                                 <i class="zmdi zmdi-minus"></i>Regions
+                            </a>
+                        </li>
+                        <li>
+                            <a class="pt-1 pb-1" href="@Url.Action("Management", "Image")">
+                                <i class="zmdi zmdi-minus"></i>Images
                             </a>
                         </li>
                     </ul>
@@ -82,4 +87,12 @@
             }
         </ul>
     </nav>
+
+    <div class="copyright fixed-bottom border-top">
+        <p>Copyright © 2019 Damian Dziura. All rights reserved. Template modified by <a href="https://DamianDziura.pl">Damian Dziura</a>.</p>
+        <p>Copyright © 2018 Colorlib. All rights reserved. Template by <a href="https://colorlib.com">Colorlib</a>.</p>
+    </div>
 </div>
+
+
+

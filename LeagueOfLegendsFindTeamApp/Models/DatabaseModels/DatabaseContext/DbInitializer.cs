@@ -89,22 +89,28 @@ namespace LeagueOfLegendsFindTeamApp.Models.DatabaseModels.DatabaseContext
                 new Image()
                 {
                     FileName = "Iron4",
+                    Title = "Iron4",
                     Url = "https://vignette.wikia.nocookie.net/leagueoflegends/images/7/70/Season_2019_-_Iron_4.png"
                 },
                 new Image()
                 {
                     FileName = "Iron3",
+                    Title = "Iron3",
                     Url = "https://vignette.wikia.nocookie.net/leagueoflegends/images/9/95/Season_2019_-_Iron_3.png"
                 }, new Image()
                 {
                     FileName = "Iron2",
+                    Title = "Iron2",
                     Url = "https://vignette.wikia.nocookie.net/leagueoflegends/images/5/5f/Season_2019_-_Iron_2.png"
                 }, new Image()
                 {
                     FileName = "Iron1",
+                    Title = "Iron1",
                     Url = "https://vignette.wikia.nocookie.net/leagueoflegends/images/0/03/Season_2019_-_Iron_1.png"
                 },
             };
+
+            ironImages.ForEach(g => g.ImageType = ImageType.DivisionIcon);
             ironImages.ForEach(g => context.Images.Add(g));
             context.SaveChanges();
 
@@ -113,22 +119,27 @@ namespace LeagueOfLegendsFindTeamApp.Models.DatabaseModels.DatabaseContext
                 new Image()
                 {
                     FileName = "Bronze4",
+                    Title = "Bronze4",
                     Url = "https://vignette.wikia.nocookie.net/leagueoflegends/images/5/5a/Season_2019_-_Bronze_4.png"
                 },
                 new Image()
                 {
                     FileName = "Bronze3",
+                    Title = "Bronze3",
                     Url = "https://vignette.wikia.nocookie.net/leagueoflegends/images/8/81/Season_2019_-_Bronze_3.png"
                 }, new Image()
                 {
                     FileName = "Bronze2",
+                    Title = "Bronze2",
                     Url = "https://vignette.wikia.nocookie.net/leagueoflegends/images/a/ac/Season_2019_-_Bronze_2.png"
                 }, new Image()
                 {
                     FileName = "Bronze1",
+                    Title = "Bronze1",
                     Url = "https://vignette.wikia.nocookie.net/leagueoflegends/images/f/f4/Season_2019_-_Bronze_1.png"
                 },
             };
+            bronzeImages.ForEach(g => g.ImageType = ImageType.DivisionIcon);
             bronzeImages.ForEach(g => context.Images.Add(g));
             context.SaveChanges();
 
@@ -137,22 +148,27 @@ namespace LeagueOfLegendsFindTeamApp.Models.DatabaseModels.DatabaseContext
                 new Image()
                 {
                     FileName = "silver4",
+                    Title = "silver4",
                     Url = "https://vignette.wikia.nocookie.net/leagueoflegends/images/5/52/Season_2019_-_Silver_4.png"
                 },
                 new Image()
                 {
                     FileName = "silver3",
+                    Title = "silver3",
                     Url = "https://vignette.wikia.nocookie.net/leagueoflegends/images/1/19/Season_2019_-_Silver_3.png"
                 }, new Image()
                 {
                     FileName = "silver2",
+                    Title = "silver2",
                     Url = "https://vignette.wikia.nocookie.net/leagueoflegends/images/5/56/Season_2019_-_Silver_2.png"
                 }, new Image()
                 {
                     FileName = "silver1",
+                    Title = "silver1",
                     Url = "https://vignette.wikia.nocookie.net/leagueoflegends/images/7/70/Season_2019_-_Silver_1.png"
                 },
             };
+            silverImages.ForEach(g => g.ImageType = ImageType.DivisionIcon);
             silverImages.ForEach(g => context.Images.Add(g));
             context.SaveChanges();
 
@@ -161,22 +177,27 @@ namespace LeagueOfLegendsFindTeamApp.Models.DatabaseModels.DatabaseContext
                 new Image()
                 {
                     FileName = "gold4",
+                    Title = "gold4",
                     Url = "https://vignette.wikia.nocookie.net/leagueoflegends/images/c/cc/Season_2019_-_Gold_4.png"
                 },
                 new Image()
                 {
                     FileName = "gold3",
+                    Title = "gold3",
                     Url = "https://vignette.wikia.nocookie.net/leagueoflegends/images/a/a6/Season_2019_-_Gold_3.png"
                 }, new Image()
                 {
                     FileName = "gold2",
+                    Title = "gold2",
                     Url = "https://vignette.wikia.nocookie.net/leagueoflegends/images/8/8a/Season_2019_-_Gold_2.png"
                 }, new Image()
                 {
                     FileName = "gold1",
+                    Title = "gold1",
                     Url = "https://vignette.wikia.nocookie.net/leagueoflegends/images/9/96/Season_2019_-_Gold_1.png"
                 },
             };
+            goldImages.ForEach(g => g.ImageType = ImageType.DivisionIcon);
             goldImages.ForEach(g => context.Images.Add(g));
             context.SaveChanges();
 
@@ -185,22 +206,27 @@ namespace LeagueOfLegendsFindTeamApp.Models.DatabaseModels.DatabaseContext
                 new Image()
                 {
                     FileName = "platinum4",
+                    Title = "platinum4",
                     Url = "https://vignette.wikia.nocookie.net/leagueoflegends/images/a/ac/Season_2019_-_Platinum_4.png"
                 },
                 new Image()
                 {
                     FileName = "platinum3",
+                    Title = "platinum3",
                     Url = "https://vignette.wikia.nocookie.net/leagueoflegends/images/2/2b/Season_2019_-_Platinum_3.png"
                 }, new Image()
                 {
                     FileName = "platinum2",
+                    Title = "platinum2",
                     Url = "https://vignette.wikia.nocookie.net/leagueoflegends/images/a/a3/Season_2019_-_Platinum_2.png"
                 }, new Image()
                 {
                     FileName = "platinum1",
+                    Title = "platinum1",
                     Url = "https://vignette.wikia.nocookie.net/leagueoflegends/images/7/74/Season_2019_-_Platinum_1.png"
                 },
             };
+            platinumImages.ForEach(g => g.ImageType = ImageType.DivisionIcon);
             platinumImages.ForEach(g => context.Images.Add(g));
             context.SaveChanges();
 
@@ -209,22 +235,27 @@ namespace LeagueOfLegendsFindTeamApp.Models.DatabaseModels.DatabaseContext
                 new Image()
                 {
                     FileName = "diamond4",
+                    Title = "diamond4",
                     Url = "https://vignette.wikia.nocookie.net/leagueoflegends/images/e/ec/Season_2019_-_Diamond_4.png"
                 },
                 new Image()
                 {
                     FileName = "diamond3",
+                    Title = "diamond3",
                     Url = "https://vignette.wikia.nocookie.net/leagueoflegends/images/d/dc/Season_2019_-_Diamond_3.png"
                 }, new Image()
                 {
                     FileName = "diamond2",
+                    Title = "diamond2",
                     Url = "https://vignette.wikia.nocookie.net/leagueoflegends/images/7/70/Season_2019_-_Diamond_2.png"
                 }, new Image()
                 {
                     FileName = "diamond1",
+                    Title = "diamond1",
                     Url = "https://vignette.wikia.nocookie.net/leagueoflegends/images/9/91/Season_2019_-_Diamond_1.png"
                 },
             };
+            diamondImages.ForEach(g => g.ImageType = ImageType.DivisionIcon);
             diamondImages.ForEach(g => context.Images.Add(g));
             context.SaveChanges();
 
@@ -233,22 +264,27 @@ namespace LeagueOfLegendsFindTeamApp.Models.DatabaseModels.DatabaseContext
                 new Image()
                 {
                     FileName = "master4",
+                    Title = "master4",
                     Url = "https://vignette.wikia.nocookie.net/leagueoflegends/images/0/01/Season_2019_-_Master_4.png"
                 },
                 new Image()
                 {
                     FileName = "master3",
+                    Title = "master3",
                     Url = "https://vignette.wikia.nocookie.net/leagueoflegends/images/4/46/Season_2019_-_Master_3.png"
                 }, new Image()
                 {
                     FileName = "master2",
+                    Title = "master2",
                     Url = "https://vignette.wikia.nocookie.net/leagueoflegends/images/9/95/Season_2019_-_Master_2.png"
                 }, new Image()
                 {
                     FileName = "master1",
+                    Title = "master1",
                     Url = "https://vignette.wikia.nocookie.net/leagueoflegends/images/1/11/Season_2019_-_Master_1.png"
                 },
             };
+            masterImages.ForEach(g => g.ImageType = ImageType.DivisionIcon);
             masterImages.ForEach(g => context.Images.Add(g));
             context.SaveChanges();
 
@@ -256,23 +292,28 @@ namespace LeagueOfLegendsFindTeamApp.Models.DatabaseModels.DatabaseContext
             {
                 new Image()
                 {
+                    Title = "grandMaster4",
                     FileName = "grandMaster4",
                     Url = "https://vignette.wikia.nocookie.net/leagueoflegends/images/4/42/Season_2019_-_Grandmaster_4.png"
                 },
                 new Image()
                 {
                     FileName = "grandMaster3",
+                    Title = "grandMaster3",
                     Url = "https://vignette.wikia.nocookie.net/leagueoflegends/images/f/f6/Season_2019_-_Grandmaster_3.png"
                 }, new Image()
                 {
                     FileName = "grandMaster2",
+                    Title = "grandMaster2",
                     Url = "https://vignette.wikia.nocookie.net/leagueoflegends/images/5/58/Season_2019_-_Grandmaster_2.png"
                 }, new Image()
                 {
                     FileName = "grandMaster1",
+                    Title = "grandMaster1",
                     Url = "https://vignette.wikia.nocookie.net/leagueoflegends/images/7/76/Season_2019_-_Grandmaster_1.png"
                 },
             };
+            grandMasterImages.ForEach(g => g.ImageType = ImageType.DivisionIcon);
             grandMasterImages.ForEach(g => context.Images.Add(g));
             context.SaveChanges();
 
@@ -281,22 +322,27 @@ namespace LeagueOfLegendsFindTeamApp.Models.DatabaseModels.DatabaseContext
                 new Image()
                 {
                     FileName = "challenger4",
+                    Title = "challenger4",
                     Url = "https://vignette.wikia.nocookie.net/leagueoflegends/images/e/e3/Season_2019_-_Challenger_4.png"
                 },
                 new Image()
                 {
                     FileName = "challenger3",
+                    Title = "challenger3",
                     Url = "https://vignette.wikia.nocookie.net/leagueoflegends/images/e/e0/Season_2019_-_Challenger_3.png"
                 }, new Image()
                 {
                     FileName = "challenger2",
+                    Title = "challenger2",
                     Url = "https://vignette.wikia.nocookie.net/leagueoflegends/images/2/29/Season_2019_-_Challenger_2.png"
                 }, new Image()
                 {
                     FileName = "challenger1",
+                    Title = "challenger1",
                     Url = "https://vignette.wikia.nocookie.net/leagueoflegends/images/5/5f/Season_2019_-_Challenger_1.png"
                 },
             };
+            challengerImages.ForEach(g => g.ImageType = ImageType.DivisionIcon);
             challengerImages.ForEach(g => context.Images.Add(g));
             context.SaveChanges();
 
