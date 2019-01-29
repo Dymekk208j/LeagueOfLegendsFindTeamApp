@@ -294,6 +294,7 @@
     <Compile Include="Repository\ImageRepository.cs" />
     <Compile Include="Repository\IRepository.cs" />
     <Compile Include="Repository\LanguageRepository.cs" />
+    <Compile Include="Repository\LeagueRepository.cs" />
     <Compile Include="Repository\PositionRepository.cs" />
     <Compile Include="Repository\QueueTypeRepository.cs" />
     <Compile Include="Repository\RegionRepository.cs" />
