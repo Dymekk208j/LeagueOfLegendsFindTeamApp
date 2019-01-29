@@ -354,7 +354,7 @@ namespace LeagueOfLegendsFindTeamApp.Models.DatabaseModels.DatabaseContext
                 leagues.Add(new League()
                 {
                     Name = "Iron " + GetRomanNumber(i),
-                    Division = 9,
+                    Division = Division.Iron,
                     LeagueValue = 37 - (5 - i),
                     Logo = context.Images.FirstOrDefault(j => j.FileName == "iron" + i.ToString())
                 });
@@ -363,7 +363,7 @@ namespace LeagueOfLegendsFindTeamApp.Models.DatabaseModels.DatabaseContext
                 leagues.Add(new League()
                 {
                     Name = "Bronze " + GetRomanNumber(i),
-                    Division = 8,
+                    Division = Division.Bronze,
                     LeagueValue = 33 - (5 - i),
                     Logo = context.Images.FirstOrDefault(j => j.FileName == "bronze" + i.ToString())
                 });
@@ -372,7 +372,7 @@ namespace LeagueOfLegendsFindTeamApp.Models.DatabaseModels.DatabaseContext
                 leagues.Add(new League()
                 {
                     Name = "Silver " + GetRomanNumber(i),
-                    Division = 7,
+                    Division = Division.Silver,
                     LeagueValue = 29 - (5 - i),
                     Logo = context.Images.FirstOrDefault(j => j.FileName == "silver" + i.ToString())
                 });
@@ -380,7 +380,7 @@ namespace LeagueOfLegendsFindTeamApp.Models.DatabaseModels.DatabaseContext
                 leagues.Add(new League()
                 {
                     Name = "Gold " + GetRomanNumber(i),
-                    Division = 6,
+                    Division = Division.Gold,
                     LeagueValue = 25 - (5 - i),
                     Logo = context.Images.FirstOrDefault(j => j.FileName == "gold" + i.ToString())
                 });
@@ -388,7 +388,7 @@ namespace LeagueOfLegendsFindTeamApp.Models.DatabaseModels.DatabaseContext
                 leagues.Add(new League()
                 {
                     Name = "Platinum " + GetRomanNumber(i),
-                    Division = 5,
+                    Division = Division.Platinum,
                     LeagueValue = 21 - (5 - i),
                     Logo = context.Images.FirstOrDefault(j => j.FileName == "platinum" + i.ToString())
                 });
@@ -396,7 +396,7 @@ namespace LeagueOfLegendsFindTeamApp.Models.DatabaseModels.DatabaseContext
                 leagues.Add(new League()
                 {
                     Name = "Diamond " + GetRomanNumber(i),
-                    Division = 4,
+                    Division = Division.Diamond,
                     LeagueValue = 17 - (5 - i),
                     Logo = context.Images.FirstOrDefault(j => j.FileName == "diamond" + i.ToString())
                 });
@@ -404,7 +404,7 @@ namespace LeagueOfLegendsFindTeamApp.Models.DatabaseModels.DatabaseContext
                 leagues.Add(new League()
                 {
                     Name = "Master - Split " + GetRomanNumber(i),
-                    Division = 3,
+                    Division = Division.Master,
                     LeagueValue = 13 - (5 - i),
                     Logo = context.Images.FirstOrDefault(j => j.FileName == "master" + i.ToString())
                 });
@@ -412,7 +412,7 @@ namespace LeagueOfLegendsFindTeamApp.Models.DatabaseModels.DatabaseContext
                 leagues.Add(new League()
                 {
                     Name = "Grandmaster - Split " + GetRomanNumber(i),
-                    Division = 2,
+                    Division = Division.GrandMaster,
                     LeagueValue = 9 - (5 - i),
                     Logo = context.Images.FirstOrDefault(j => j.FileName == "grandMaster" + i.ToString())
                 });
@@ -420,7 +420,7 @@ namespace LeagueOfLegendsFindTeamApp.Models.DatabaseModels.DatabaseContext
                 leagues.Add(new League()
                 {
                     Name = "Challenger - Split " + GetRomanNumber(i),
-                    Division = 1,
+                    Division = Division.Challenger,
                     LeagueValue = 5 - (5 - i),
                     Logo = context.Images.FirstOrDefault(j => j.FileName == "challenger" + i.ToString())
                 });

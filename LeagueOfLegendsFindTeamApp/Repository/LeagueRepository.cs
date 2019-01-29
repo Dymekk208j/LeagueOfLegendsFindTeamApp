@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Web;
 using LeagueOfLegendsFindTeamApp.Models.DatabaseModels;
 using Unity.Attributes;
 
@@ -71,8 +70,8 @@ namespace LeagueOfLegendsFindTeamApp.Repository
                 league.Name = entity.Name;
                 league.Division = entity.Division;
                 league.LeagueValue = entity.LeagueValue;
-                league.Logo.ImageId = entity.Logo.ImageId;
-                //TODO: Trzeba sprawdzić czy poprawnie sie updatuje ???
+                league.Logo = Context.Images.Single(a => a.ImageId == entity.Logo.ImageId);
+
                 return Context.SaveChanges() > 0;
             }
             catch (Exception ex)

@@ -1,12 +1,11 @@
-﻿using System.Collections.Generic;
-using System.Linq;
+﻿using System.Linq;
 using System.Web.Mvc;
 using LeagueOfLegendsFindTeamApp.Models.DatabaseModels;
 using LeagueOfLegendsFindTeamApp.Repository;
 
 namespace LeagueOfLegendsFindTeamApp.Controllers
 {
-  //  [Authorize(Roles = "Admin")]
+    [Authorize(Roles = "Admin")]
     public class ImageController : Controller
     {
         private readonly IRepository<Image, int> _repository;

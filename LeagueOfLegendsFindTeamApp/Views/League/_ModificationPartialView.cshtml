@@ -1,0 +1,48 @@
+﻿@model LeagueOfLegendsFindTeamApp.Models.DatabaseModels.League
+
+<div class="card-header">
+    Modification <strong>@Html.Name(Model.Name)</strong> league
+</div>
+<div class="card-body">
+    @Html.ValidationSummary()
+    @{
+        using (Ajax.BeginForm("UpdateLeague", "League",
+            new AjaxOptions {HttpMethod = "post", UpdateTargetId = "LeagueCard", InsertionMode = InsertionMode.Replace},
+            new {id = "LeagueCard"}))
+        {
+            @Html.HiddenFor(m => m.LeagueId)
+
+            @Html.LabelFor(m => m.Logo)
+            @Html.HiddenFor(m => m.Logo.ImageId)
+            @Html.HiddenFor(m => m.Logo.Title)
+            @Html.HiddenFor(m => m.Logo.Url)
+
+            <div>
+                <a href="#" data-toggle="modal" data-target="#exampleModalCenter">
+                    <img id="LogoImage" alt="Image" class="image" src="@Html.Raw(Model.Logo.Url)" width="150" height="150"/>
+                </a>
+            </div>
+
+            @Html.LabelFor(m => m.Name)
+            @Html.EditorFor(m => m.Name, new {htmlAttributes = new {@class = "form-control mb-3"}})
+
+            @Html.LabelFor(m => m.LeagueValue)
+            @Html.EditorFor(m => m.LeagueValue, new {htmlAttributes = new {@class = "form-control mb-3"}})
+
+            @Html.LabelFor(m => m.Division)
+            @Html.EnumDropDownListFor(m => m.Division, new {@class = "form-control mb-3"})
+
+
+            <button type="submit" class="btn btn-sm btn-success float-right mt-5"><i class="zmdi zmdi-upload mr-2" id="BtnUpdate" name="BtnUpdate"></i>Update</button>
+        }
+
+        <button type="button" class="btn btn-sm btn-secondary float-left mt-5" name="BtnReturn" id="BtnReturn" onclick="GoToLeaguesView()"><i class="zmdi zmdi-long-arrow-return mr-2"></i>Return</button>
+
+        <div style="text-align: center;">
+            <button type="button" class="btn btn-sm btn-danger mt-5" name="BtnReturn" id="btnRemove" onclick="RemoveLeague(@Html.Raw(Model.LeagueId))"><i class="zmdi zmdi-delete mr-2"></i>Remove</button>
+        </div>
+
+    }
+</div>
+
+

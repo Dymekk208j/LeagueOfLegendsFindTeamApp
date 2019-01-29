@@ -1,0 +1,18 @@
+﻿@model List<LeagueOfLegendsFindTeamApp.Models.DatabaseModels.League>
+
+<div class="accordion" id="accordionLeagues">
+    @foreach (var leagues in Model.Select(x => x.Division).Distinct())
+    {
+        <div class="card-header" id="@Html.Raw("Division" + leagues.ToString())" data-toggle="collapse" data-target="@Html.Raw("#collapse" + leagues.ToString())" aria-expanded="true" aria-controls="@Html.Raw("collapse" + leagues.ToString())" style="cursor: pointer;">
+            <h4 class="h4 mb-0"><i class="zmdi zmdi-caret-down mr-2"></i>
+                @Html.Name(leagues.ToString())
+            </h4>
+        </div>
+        <div id="@Html.Raw("collapse" + leagues.ToString())" class="collapse" aria-labelledby="@Html.Raw("collapse" + leagues.ToString())" data-parent="#accordionLeagues">
+            <div class="card-body">
+                @Html.Partial("_TablePartialView", Model.OrderByDescending(x => x.LeagueId).Where(d => d.Division == leagues).ToList())
+            </div>
+        </div>
+    }
+</div>
+
