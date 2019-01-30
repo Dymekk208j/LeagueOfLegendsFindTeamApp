@@ -57,5 +57,13 @@ namespace LeagueOfLegendsFindTeamApp.Controllers
 
             return PartialView("_ModificationPartialView", league);
         }
+
+        [HttpGet]
+        public ActionResult RemoveLeague(int leagueId)
+        {
+            _repository.Remove(leagueId);
+
+            return PartialView("_LeaguesPartialView", _repository.GetAll());
+        }
     }
 }

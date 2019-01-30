@@ -23,18 +23,24 @@
 
     <script>
         function GoToCreateForm() {
-            $.ajax({url: "@Url.Action("GetCreateNewPartialView", "Language")", success: function(result){
-                $("#LanguageCard").html(result);
-            }});
+            $.ajax({
+                url: "@Url.Action("GetCreateNewPartialView", "Language")",
+                success: function(result) {
+                    $("#LanguageCard").html(result);
+                }
+            });
         }
     </script>
 
     <script>
         function GoToTableForm() {
-            $.ajax({url: "@Url.Action("GetTable", "Language")", success: function(result){
-                $("#LanguageCard").html(result);
-                $('#LanguageTable').DataTable();
-            }});
+            $.ajax({
+                url: "@Url.Action("GetTable", "Language")",
+                success: function(result) {
+                    $("#LanguageCard").html(result);
+                    $('#LanguageTable').DataTable();
+                }
+            });
         }
     </script>
 
@@ -53,20 +59,24 @@
                 {
                     url: "@Url.Action("GetModificationPartialView", "Language")",
                     data: { languageId: id },
-                    success: function (result) {
+                    success: function(result) {
                         $("#LanguageCard").html(result);
-                    }});
+                    }
+                });
         }
 
         function RemoveLanguage(id) {
-            $.ajax(
-                {
-                    url: "@Url.Action("RemoveLanguage", "Language")",
-                    data: { languageId: id },
-                    success: function (result) {
-                        $("#LanguageCard").html(result);
-                        $('#LanguageTable').DataTable();
-                    }});
+            if (confirm('Do you want remove language?')) {
+                $.ajax(
+                    {
+                        url: "@Url.Action("RemoveLanguage", "Language")",
+                        data: { languageId: id },
+                        success: function(result) {
+                            $("#LanguageCard").html(result);
+                            $('#LanguageTable').DataTable();
+                        }
+                    });
+            }
         }
     </script>
 }

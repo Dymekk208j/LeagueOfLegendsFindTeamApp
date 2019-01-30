@@ -5,7 +5,10 @@
 }
 
 <div class="col-lg-12">
-    <div class="card mt-3 pb-3" style="min-height: 500px" id="LeagueCard">
+
+    <div class="card pb-3" style="min-height: 500px" id="LeagueCard">
+
+
         @Html.Action("GetModificationPartialView", "League", new { leagueId = 1 })
     </div>
 </div>
@@ -29,20 +32,24 @@
                 {
                     url: "@Url.Action("GetModificationPartialView", "League")",
                     data: { leagueId: id },
-                    success: function (result) {
+                    success: function(result) {
                         $("#LeagueCard").html(result);
-                    }});
+                    }
+                });
         }
 
         function RemoveLeague(id) {
-            $.ajax(
-                {
-                    url: "@Url.Action("RemoveLeague", "League")",
-                    data: { leagueId: id },
-                    success: function (result) {
-                        $("#LeagueCard").html(result);
-                    }});
+            if (confirm('Do you want remove division?')) {
+                $.ajax(
+                    {
+                        url: "@Url.Action("RemoveLeague", "League")",
+                        data: { leagueId: id },
+                        success: function(result) {
+                            $("#LeagueCard").html(result);
+                        }
+                    });
         }
+    }
 
         function SelectNewLogo(id, url) {
             $('#LogoImage').attr('src', url);

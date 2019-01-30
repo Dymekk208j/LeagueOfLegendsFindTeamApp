@@ -23,18 +23,24 @@
 
     <script>
         function GoToCreateForm() {
-            $.ajax({url: "@Url.Action("GetCreateNewPartialView", "QueueType")", success: function(result){
-                $("#QueueTypeCard").html(result);
-            }});
+            $.ajax({
+                url: "@Url.Action("GetCreateNewPartialView", "QueueType")",
+                success: function(result) {
+                    $("#QueueTypeCard").html(result);
+                }
+            });
         }
     </script>
 
     <script>
         function GoToTableForm() {
-            $.ajax({url: "@Url.Action("GetTable", "QueueType")", success: function(result){
-                $("#QueueTypeCard").html(result);
-                $('#QueueTypeTable').DataTable();
-            }});
+            $.ajax({
+                url: "@Url.Action("GetTable", "QueueType")",
+                success: function(result) {
+                    $("#QueueTypeCard").html(result);
+                    $('#QueueTypeTable').DataTable();
+                }
+            });
         }
     </script>
 
@@ -53,20 +59,24 @@
                 {
                     url: "@Url.Action("GetModificationPartialView", "QueueType")",
                     data: { queueId: id },
-                    success: function (result) {
+                    success: function(result) {
                         $("#QueueTypeCard").html(result);
-                    }});
+                    }
+                });
         }
 
         function RemoveQueueType(id) {
-            $.ajax(
-                {
-                    url: "@Url.Action("RemoveQueueType", "QueueType")",
-                    data: { queueTypeId: id },
-                    success: function (result) {
-                        $("#QueueTypeCard").html(result);
-                        $('#QueueTypeTable').DataTable();
-                    }});
+            if (confirm('Do you want remove queue type?')) {
+                $.ajax(
+                    {
+                        url: "@Url.Action("RemoveQueueType", "QueueType")",
+                        data: { queueTypeId: id },
+                        success: function(result) {
+                            $("#QueueTypeCard").html(result);
+                            $('#QueueTypeTable').DataTable();
+                        }
+                    });
+            }
         }
     </script>
 }

@@ -23,18 +23,24 @@
 
     <script>
         function GoToCreateForm() {
-            $.ajax({url: "@Url.Action("GetCreateNewPartialView", "TeamType")", success: function(result){
-                $("#TeamTypeCard").html(result);
-            }});
+            $.ajax({
+                url: "@Url.Action("GetCreateNewPartialView", "TeamType")",
+                success: function(result) {
+                    $("#TeamTypeCard").html(result);
+                }
+            });
         }
     </script>
 
     <script>
         function GoToTableForm() {
-            $.ajax({url: "@Url.Action("GetTable", "TeamType")", success: function(result){
-                $("#TeamTypeCard").html(result);
-                $('#TeamTypeTable').DataTable();
-            }});
+            $.ajax({
+                url: "@Url.Action("GetTable", "TeamType")",
+                success: function(result) {
+                    $("#TeamTypeCard").html(result);
+                    $('#TeamTypeTable').DataTable();
+                }
+            });
         }
     </script>
 
@@ -53,20 +59,24 @@
                 {
                     url: "@Url.Action("GetModificationPartialView", "TeamType")",
                     data: { teamTypeId: id },
-                    success: function (result) {
+                    success: function(result) {
                         $("#TeamTypeCard").html(result);
-                    }});
+                    }
+                });
         }
 
         function RemoveTeamType(id) {
-            $.ajax(
-                {
-                    url: "@Url.Action("RemoveTeamType", "TeamType")",
-                    data: { teamTypeId: id },
-                    success: function (result) {
-                        $("#TeamTypeCard").html(result);
-                        $('#TeamTypeTable').DataTable();
-                    }});
+            if (confirm('Do you want remove region?')) {
+                $.ajax(
+                    {
+                        url: "@Url.Action("RemoveTeamType", "TeamType")",
+                        data: { teamTypeId: id },
+                        success: function(result) {
+                            $("#TeamTypeCard").html(result);
+                            $('#TeamTypeTable').DataTable();
+                        }
+                    });
+            }
         }
     </script>
 }

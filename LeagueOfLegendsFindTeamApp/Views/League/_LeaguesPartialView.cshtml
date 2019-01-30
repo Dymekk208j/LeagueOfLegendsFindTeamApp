@@ -1,4 +1,9 @@
 ﻿@model List<LeagueOfLegendsFindTeamApp.Models.DatabaseModels.League>
+<div class="card-header mb-3">
+    <strong>Leagues list</strong>
+    <button type="button" class="btn btn-sm btn-success float-right" id="BtnCreateNew" name="BtnCreateNew" onclick="GoToCreateForm()"><i class="zmdi zmdi-file-plus mr-2"></i>Create new division</button>
+
+</div>
 
 <div class="accordion" id="accordionLeagues">
     @foreach (var leagues in Model.Select(x => x.Division).Distinct())

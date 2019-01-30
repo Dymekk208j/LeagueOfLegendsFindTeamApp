@@ -23,18 +23,24 @@
 
     <script>
         function GoToCreateForm() {
-            $.ajax({url: "@Url.Action("GetCreateNewPartialView", "Region")", success: function(result){
-                $("#RegionCard").html(result);
-            }});
+            $.ajax({
+                url: "@Url.Action("GetCreateNewPartialView", "Region")",
+                success: function(result) {
+                    $("#RegionCard").html(result);
+                }
+            });
         }
     </script>
 
     <script>
         function GoToTableForm() {
-            $.ajax({url: "@Url.Action("GetTable", "Region")", success: function(result){
-                $("#RegionCard").html(result);
-                $('#RegionsTable').DataTable();
-            }});
+            $.ajax({
+                url: "@Url.Action("GetTable", "Region")",
+                success: function(result) {
+                    $("#RegionCard").html(result);
+                    $('#RegionsTable').DataTable();
+                }
+            });
         }
     </script>
 
@@ -53,20 +59,24 @@
                 {
                     url: "@Url.Action("GetModificationPartialView", "Region")",
                     data: { regionId: id },
-                    success: function (result) {
+                    success: function(result) {
                         $("#RegionCard").html(result);
-                    }});
+                    }
+                });
         }
 
         function RemoveRegion(id) {
-            $.ajax(
-                {
-                    url: "@Url.Action("RemoveRegion", "Region")",
-                    data: { regionId: id },
-                    success: function (result) {
-                        $("#RegionCard").html(result);
-                        $('#RegionsTable').DataTable();
-                    }});
+            if (confirm('Do you want remove region?')) {
+                $.ajax(
+                    {
+                        url: "@Url.Action("RemoveRegion", "Region")",
+                        data: { regionId: id },
+                        success: function(result) {
+                            $("#RegionCard").html(result);
+                            $('#RegionsTable').DataTable();
+                        }
+                    });
+            }
         }
     </script>
 }

@@ -23,18 +23,24 @@
 
     <script>
         function GoToCreateForm() {
-            $.ajax({url: "@Url.Action("GetCreateNewPartialView", "Position")", success: function(result){
-                $("#PositionsCard").html(result);
-            }});
+            $.ajax({
+                url: "@Url.Action("GetCreateNewPartialView", "Position")",
+                success: function(result) {
+                    $("#PositionsCard").html(result);
+                }
+            });
         }
     </script>
 
     <script>
         function GoToTableForm() {
-            $.ajax({url: "@Url.Action("GetTable", "Position")", success: function(result){
-                $("#PositionsCard").html(result);
-                $('#PositionsTable').DataTable();
-            }});
+            $.ajax({
+                url: "@Url.Action("GetTable", "Position")",
+                success: function(result) {
+                    $("#PositionsCard").html(result);
+                    $('#PositionsTable').DataTable();
+                }
+            });
         }
     </script>
 
@@ -53,20 +59,24 @@
                 {
                     url: "@Url.Action("GetModificationPartialView", "Position")",
                     data: { positionId: id },
-                    success: function (result) {
+                    success: function(result) {
                         $("#PositionsCard").html(result);
-                    }});
+                    }
+                });
         }
 
         function RemovePosition(id) {
-            $.ajax(
-                {
-                    url: "@Url.Action("RemovePosition", "Position")",
-                    data: { positionId: id },
-                    success: function (result) {
-                        $("#PositionsCard").html(result);
-                        $('#PositionsTable').DataTable();
-                    }});
+            if (confirm('Do you want remove position?')) {
+                $.ajax(
+                    {
+                        url: "@Url.Action("RemovePosition", "Position")",
+                        data: { positionId: id },
+                        success: function(result) {
+                            $("#PositionsCard").html(result);
+                            $('#PositionsTable').DataTable();
+                        }
+                    });
+            }
         }
     </script>
 }

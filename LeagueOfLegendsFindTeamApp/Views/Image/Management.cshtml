@@ -52,37 +52,43 @@
                 {
                     url: "@Url.Action("GetImageListPartialView", "Image")",
                     data: { imageType: imageType },
-                    success: function (result) {
+                    success: function(result) {
                         $("#ImagesCard").html(result);
-                    }});
+                    }
+                });
         }
 
         function GoToCategorySelectPanel() {
             $.ajax(
                 {
                     url: "@Url.Action("GetSelectCategoryPartialView", "Image")",
-                    success: function (result) {
+                    success: function(result) {
                         $("#ImagesCard").html(result);
-                    }});
+                    }
+                });
         }
 
         function GoToCreatePanel() {
             $.ajax(
                 {
                     url: "@Url.Action("GetCreateImagePartialView", "Image")",
-                    success: function (result) {
+                    success: function(result) {
                         $("#ImagesCard").html(result);
-                    }});
+                    }
+                });
         }
 
         function RemoveImage(imageId) {
-            $.ajax(
-                {
-                    url: "@Url.Action("RemoveImage", "Image")",
-                    data: { imageId: imageId },
-                    success: function (result) {
-                        $("#ImagesCard").html(result);
-                    }});
+            if (confirm('Do you want remove image?')) {
+                $.ajax(
+                    {
+                        url: "@Url.Action("RemoveImage", "Image")",
+                        data: { imageId: imageId },
+                        success: function(result) {
+                            $("#ImagesCard").html(result);
+                        }
+                    });
+            }
         }
 
         function GoToModificationPanel(imageId) {
@@ -90,9 +96,10 @@
                 {
                     url: "@Url.Action("GetModificationPartialView", "Image")",
                     data: { imageId: imageId },
-                    success: function (result) {
+                    success: function(result) {
                         $("#ImagesCard").html(result);
-                    }});
+                    }
+                });
         }
 
         function UpdateImage() {
