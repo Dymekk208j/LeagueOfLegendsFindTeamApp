@@ -33,5 +33,8 @@ namespace LeagueOfLegendsFindTeamApp.Models.DatabaseModels
 
         [Display(Name = "Gender")]
         public Gender Gender { get; set; }
+
+        [Required]
+        public virtual ApplicationUser ApplicationUser { get; set; }
     }
 }

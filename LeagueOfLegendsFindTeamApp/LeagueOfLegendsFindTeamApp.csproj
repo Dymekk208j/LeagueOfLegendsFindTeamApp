@@ -274,6 +274,14 @@
     <Compile Include="Migrations\201901292009588_CreateEnumInLeagueModel.Designer.cs">
       <DependentUpon>201901292009588_CreateEnumInLeagueModel.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201901301718237_NewMigration.cs" />
+    <Compile Include="Migrations\201901301718237_NewMigration.Designer.cs">
+      <DependentUpon>201901301718237_NewMigration.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201901301719228_NewMigration2.cs" />
+    <Compile Include="Migrations\201901301719228_NewMigration2.Designer.cs">
+      <DependentUpon>201901301719228_NewMigration2.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\DatabaseModels\Champion.cs" />
     <Compile Include="Models\DatabaseModels\Contact.cs" />
@@ -753,6 +761,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201901292009588_CreateEnumInLeagueModel.resx">
       <DependentUpon>201901292009588_CreateEnumInLeagueModel.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201901301718237_NewMigration.resx">
+      <DependentUpon>201901301718237_NewMigration.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201901301719228_NewMigration2.resx">
+      <DependentUpon>201901301719228_NewMigration2.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

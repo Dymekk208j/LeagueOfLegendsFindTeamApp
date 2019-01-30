@@ -39,6 +39,8 @@ namespace LeagueOfLegendsFindTeamApp.Controllers
             private set => _userManager = value;
         }
 
+
+
         //
         // GET: /Account/Login
         [AllowAnonymous]

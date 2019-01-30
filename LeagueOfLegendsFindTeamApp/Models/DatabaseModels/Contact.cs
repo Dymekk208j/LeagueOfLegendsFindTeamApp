@@ -17,5 +17,8 @@ namespace LeagueOfLegendsFindTeamApp.Models.DatabaseModels
 
         [Display(Name = "Facebook link")]
         public string FacebookLink { get; set; }
+
+        [Required]
+        public virtual ApplicationUser ApplicationUser { get; set; }
     }
 }

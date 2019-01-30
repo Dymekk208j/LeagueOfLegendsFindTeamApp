@@ -55,5 +55,8 @@ namespace LeagueOfLegendsFindTeamApp.Models.DatabaseModels
 
         [Display(Name = "Team invitations")]
         public IEnumerable<TeamInvitation> TeamInvitations { get; set; }
+
+        [Required]
+        public virtual ApplicationUser ApplicationUser { get; set; }
     }
 }

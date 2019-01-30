@@ -22,6 +22,10 @@ namespace LeagueOfLegendsFindTeamApp.Models.DatabaseModels
         [Display(Name = "Blocked")]
         public bool Blocked { get; set; }
 
+        public Person Person { get; set; }
+        public GamerProfile GamerProfile { get; set; }
+
+        public Contact Contact { get; set; }
         public static string GetUserName(string guid)
         {
             ApplicationDbContext applicationDbContext = new ApplicationDbContext();
