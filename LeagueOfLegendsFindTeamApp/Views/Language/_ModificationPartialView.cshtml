@@ -4,6 +4,7 @@
     <strong>Modification @Html.Name(Model.Name) language</strong>
 </div>
 <div class="card-body">
+    @Html.ValidationSummary(false, "", new { @class = "ml-3 text-danger" })
     @{
         using (Ajax.BeginForm("ModifyLanguage", "Language",
             new AjaxOptions { HttpMethod = "post", UpdateTargetId = "LanguageCard", InsertionMode = InsertionMode.Replace, OnSuccess = "LoadTable()" },
@@ -21,7 +22,7 @@
 
         <button type="button" class="btn btn-sm btn-secondary float-left mt-5" name="BtnReturn" id="BtnReturn" onclick="GoToTableForm()"><i class="zmdi zmdi-long-arrow-return mr-2"></i>Return</button>
 
-        <div style="text-align: center;" >
+        <div style="text-align: center;">
             <button type="button" class="btn btn-sm btn-danger mt-5" name="BtnReturn" id="btnRemove" onclick="RemoveLanguage(@Html.Raw(Model.LanguageId))"><i class="zmdi zmdi-delete mr-2"></i>Remove</button>
         </div>
 

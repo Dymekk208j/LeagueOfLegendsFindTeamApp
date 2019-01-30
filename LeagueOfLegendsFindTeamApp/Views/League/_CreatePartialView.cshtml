@@ -1,12 +1,12 @@
 ﻿@model LeagueOfLegendsFindTeamApp.Models.DatabaseModels.League
 
 <div class="card-header">
-    Modification <strong>@Html.Name(Model.Name)</strong> league
+    Create new league
 </div>
 <div class="card-body">
-    @Html.ValidationSummary(false, "", new { @class = "ml-3 text-danger" })
+    @Html.ValidationSummary(false, "", new{ @class = "ml-3 text-danger" })
     @{
-        using (Ajax.BeginForm("UpdateLeague", "League",
+        using (Ajax.BeginForm("CreateLeague", "League",
             new AjaxOptions { HttpMethod = "post", UpdateTargetId = "LeagueCard", InsertionMode = InsertionMode.Replace },
             new { id = "LeagueCard" }))
         {
@@ -19,7 +19,16 @@
 
             <div class="mb-3">
                 <a href="#" data-toggle="modal" data-target="#selectImageModal">
-                    <img id="LogoImage" alt="Image" class="image border" src="@Html.Raw(Model.Logo.Url)" width="150" height="150" />
+                    <img id="LogoImage" alt="Image" class="image border" src="
+                         @if (Model.Logo.Url.IsEmpty())
+                         {
+                             @Html.Raw("https://via.placeholder.com/150x150")
+                         }
+                         else
+                         {
+                             @Html.Raw(Model.Logo.Url)
+                         }
+                         " width="150" height="150" />
                 </a>
             </div>
 
@@ -33,14 +42,10 @@
             @Html.EnumDropDownListFor(m => m.Division, new { @class = "form-control mb-3" })
 
 
-            <button type="submit" class="btn btn-sm btn-success float-right mt-5"><i class="zmdi zmdi-upload mr-2" id="BtnUpdate" name="BtnUpdate"></i>Update</button>
+            <button type="submit" class="btn btn-sm btn-success float-right mt-5"><i class="zmdi zmdi-upload mr-2" id="BtnCreate" name="BtnCreate"></i>Create</button>
         }
 
         <button type="button" class="btn btn-sm btn-secondary float-left mt-5" name="BtnReturn" id="BtnReturn" onclick="GoToLeaguesView()"><i class="zmdi zmdi-long-arrow-return mr-2"></i>Return</button>
-
-        <div style="text-align: center;">
-            <button type="button" class="btn btn-sm btn-danger mt-5" name="BtnReturn" id="btnRemove" onclick="RemoveLeague(@Html.Raw(Model.LeagueId))"><i class="zmdi zmdi-delete mr-2"></i>Remove</button>
-        </div>
 
     }
 </div>

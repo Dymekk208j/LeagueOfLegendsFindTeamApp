@@ -5,11 +5,8 @@
 }
 
 <div class="col-lg-12">
-
     <div class="card pb-3" style="min-height: 500px" id="LeagueCard">
-
-
-        @Html.Action("GetModificationPartialView", "League", new { leagueId = 1 })
+        @Html.Action("GetLeaguesPartialView", "League")
     </div>
 </div>
 
@@ -57,13 +54,13 @@
         }
     </script>
 
-    @*<script>
+    <script>
             function GoToCreateForm() {
-                $.ajax({url: "@Url.Action("GetCreateNewPartialView", "Position")", success: function(result){
+                $.ajax({url: "@Url.Action("GetCreatePartialView", "League")", success: function(result){
                     $("#LeagueCard").html(result);
                 }});
             }
-        </script>*@
+        </script>
 
     <script>
         function GoToLeaguesView() {

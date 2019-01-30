@@ -11,8 +11,8 @@
     {
         <div class="card-body">
             <div class="row mb-2">
-                <div class="col ml-5">
-                    @Html.ValidationSummary()
+                <div class="col ml-3">
+                    @Html.ValidationSummary(false, "", new { @class = "text-danger" })
                 </div>
             </div>
             <div class="row d-flex align-items-start justify-content-start">

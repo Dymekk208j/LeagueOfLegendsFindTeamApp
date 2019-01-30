@@ -4,6 +4,7 @@
     <strong>Modification @Html.Name(Model.Name) region</strong>
 </div>
 <div class="card-body">
+    @Html.ValidationSummary(false, "", new { @class = "ml-3 text-danger" })
     @{
         using (Ajax.BeginForm("ModifyRegion", "Region",
             new AjaxOptions { HttpMethod = "post", UpdateTargetId = "RegionCard", InsertionMode = InsertionMode.Replace, OnSuccess = "LoadTable()" },

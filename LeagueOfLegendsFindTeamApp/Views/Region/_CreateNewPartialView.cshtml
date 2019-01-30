@@ -4,6 +4,7 @@
     <strong>Create new region</strong>
 </div>
 <div class="card-body">
+    @Html.ValidationSummary(false, "", new { @class = "ml-3 text-danger" })
     @{
         using (Ajax.BeginForm("AddNewRegion", "Region",
             new AjaxOptions { HttpMethod = "post", UpdateTargetId = "RegionCard", InsertionMode = InsertionMode.Replace, OnSuccess = "LoadTable()" },

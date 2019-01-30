@@ -1,4 +1,5 @@
-﻿using System.Linq;
+﻿using System;
+using System.Linq;
 using System.Web.Mvc;
 using LeagueOfLegendsFindTeamApp.Models.DatabaseModels;
 using LeagueOfLegendsFindTeamApp.Repository;
@@ -64,6 +65,42 @@ namespace LeagueOfLegendsFindTeamApp.Controllers
             _repository.Remove(leagueId);
 
             return PartialView("_LeaguesPartialView", _repository.GetAll());
+        }
+
+        [HttpGet]
+        public ActionResult GetCreatePartialView()
+        {
+            var league = new League()
+            {
+                Logo = new Image()
+            };
+            return PartialView("_CreatePartialView", league);
+        }
+
+        [HttpPost]
+        public ActionResult CreateLeague(League league)
+        {
+            try
+            {
+                league.Logo = _imageRepository.Get(league.Logo.ImageId);
+                ModelState.Clear();
+                TryValidateModel(league);
+            }
+            catch (InvalidOperationException ex)
+            {
+                Console.WriteLine(ex);
+                ModelState.AddModelError("", @"You have to select logo");
+            }
+
+            
+            if (ModelState.IsValid)
+            {
+                _repository.Add(league);
+
+                return PartialView("_LeaguesPartialView", _repository.GetAll());
+            }
+
+            return PartialView("_CreatePartialView", league);
         }
     }
 }

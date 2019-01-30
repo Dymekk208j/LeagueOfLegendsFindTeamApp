@@ -713,6 +713,7 @@
     <Content Include="Views\League\_TablePartialView.cshtml" />
     <Content Include="Views\League\_ModificationPartialView.cshtml" />
     <Content Include="Views\League\_SelectImagePartialView.cshtml" />
+    <Content Include="Views\League\_CreatePartialView.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

@@ -4,6 +4,7 @@
     <strong>Create new team type</strong>
 </div>
 <div class="card-body">
+    @Html.ValidationSummary(false, "", new { @class = "ml-3 text-danger" })
     @{
         using (Ajax.BeginForm("AddNewTeamType", "TeamType",
             new AjaxOptions { HttpMethod = "post", UpdateTargetId = "TeamTypeCard", InsertionMode = InsertionMode.Replace, OnSuccess = "LoadTable()" },

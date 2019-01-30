@@ -4,6 +4,7 @@
     <strong>Modification @Html.Name(Model.Name) queue type</strong>
 </div>
 <div class="card-body">
+    @Html.ValidationSummary(false, "", new { @class = "ml-3 text-danger" })
     @{
         using (Ajax.BeginForm("ModifyQueueType", "QueueType",
             new AjaxOptions { HttpMethod = "post", UpdateTargetId = "QueueTypeCard", InsertionMode = InsertionMode.Replace, OnSuccess = "LoadTable()" },

@@ -4,10 +4,11 @@
     <strong>Create new language</strong>
 </div>
 <div class="card-body">
+    @Html.ValidationSummary(false, "", new { @class = "ml-3 text-danger" })
     @{
         using (Ajax.BeginForm("AddNewLanguage", "Language",
-            new AjaxOptions {HttpMethod = "post", UpdateTargetId = "LanguageCard", InsertionMode = InsertionMode.Replace, OnSuccess = "LoadTable()" },
-            new {id = "LanguageCard" }))
+            new AjaxOptions { HttpMethod = "post", UpdateTargetId = "LanguageCard", InsertionMode = InsertionMode.Replace, OnSuccess = "LoadTable()" },
+            new { id = "LanguageCard" }))
         {
             @Html.LabelFor(m => m.Name)
             @Html.EditorFor(m => m.Name, new { htmlAttributes = new { @class = "form-control" }, })
