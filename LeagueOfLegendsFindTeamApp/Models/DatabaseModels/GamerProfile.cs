@@ -8,34 +8,34 @@ namespace LeagueOfLegendsFindTeamApp.Models.DatabaseModels
         public int GamerProfileId { get; set; }
 
         [Display(Name = "Portrait")]
-        [Required(ErrorMessage = "Portrait cannot be empty")]
+       // [Required(ErrorMessage = "Portrait cannot be empty")]
         public Image Portrait { get; set; }
 
         [Display(Name = "In game Name")]
-        [Required(ErrorMessage = "In game nickname cannot be empty")]
+       // [Required(ErrorMessage = "In game nickname cannot be empty")]
         [MinLength(5, ErrorMessage = "Your in game nickname cannot be shorter then 5 chars.")]
         public string InGameName { get; set; }
 
         [Display(Name = "Primary position")]
-        [Required(ErrorMessage = "Primary position cannot be empty")]
+      //  [Required(ErrorMessage = "Primary position cannot be empty")]
         public Position PrimaryPosition { get; set; }
 
         [Display(Name = "Secondary position")]
         public Position SecondaryPosition { get; set; }
 
         [Display(Name = "Account region")]
-        [Required(ErrorMessage = "Your account region cannot be empty")]
+      //  [Required(ErrorMessage = "Your account region cannot be empty")]
         public Region Region { get; set; }
 
         [Display(Name = "Confirmed Account")]
         public bool ConfirmedAccount { get; set; }
 
         [Display(Name = "Contact details")]
-        [Required(ErrorMessage = "Contact details cannot be empty")]
+      //  [Required(ErrorMessage = "Contact details cannot be empty")]
         public Contact ContactDetails { get; set; }
 
         [Display(Name = "Person details")]
-        [Required(ErrorMessage = "Person details cannot be empty")]
+        //[Required(ErrorMessage = "Person details cannot be empty")]
         public Person Person { get; set; }
 
         [Display(Name = "Champions pool")]

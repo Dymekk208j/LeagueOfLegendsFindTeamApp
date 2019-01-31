@@ -1,0 +1,13 @@
+﻿@model List<LeagueOfLegendsFindTeamApp.Models.DatabaseModels.Language>
+
+
+<select id="selector" class="selectpicker form-control mb-3 show-menu-arrow" multiple data-style="btn-primary">
+   @{ int a = 0;}
+    @foreach (var lang in Model)
+    {
+        <option name="Languages[@a].TechnologyId">@Html.Raw(lang.Name)</option>
+        a++;
+    }
+
+</select>
+ 

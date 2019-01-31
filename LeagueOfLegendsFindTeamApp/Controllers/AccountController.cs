@@ -1,5 +1,7 @@
-﻿using LeagueOfLegendsFindTeamApp.Models.DatabaseModels;
+﻿using System.Collections.Generic;
+using LeagueOfLegendsFindTeamApp.Models.DatabaseModels;
 using LeagueOfLegendsFindTeamApp.Models.ViewModels;
+using LeagueOfLegendsFindTeamApp.Repository;
 using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.Owin;
 using Microsoft.Owin.Security;
@@ -14,17 +16,23 @@ namespace LeagueOfLegendsFindTeamApp.Controllers
     [Authorize]
     public class AccountController : Controller
     {
+        private readonly PersonRepository _personRepository;
+
+
         private ApplicationSignInManager _signInManager;
         private ApplicationUserManager _userManager;
 
-        public AccountController()
+
+        public AccountController(PersonRepository personRepository)
         {
+            _personRepository = personRepository;
         }
 
-        public AccountController(ApplicationUserManager userManager, ApplicationSignInManager signInManager)
+        public AccountController(ApplicationUserManager userManager, ApplicationSignInManager signInManager, PersonRepository personRepository)
         {
             UserManager = userManager;
             SignInManager = signInManager;
+            _personRepository = personRepository;
         }
 
         public ApplicationSignInManager SignInManager
@@ -39,8 +47,48 @@ namespace LeagueOfLegendsFindTeamApp.Controllers
             private set => _userManager = value;
         }
 
+        [Authorize]
+        [HttpGet]
+        public ActionResult SetupPersonData()
+        {
+            var user = UserManager.FindById(User.Identity.GetUserId());
+            var person = _personRepository.GetAll().First(p => p.ApplicationUser.Id == user.Id);
+
+            return View(person);
+        }
+
+        public ActionResult GetLanguagesSelectorPartialView()
+        {        
+            return PartialView("_LanguagesSelectorPartialView", _personRepository.GetListOfLanguages());
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult UpdatePersonData(Person person, string languages)
+        {
+           
+            var user = UserManager.FindById(User.Identity.GetUserId());
+            var applicationUser = _personRepository.GetAll().First(p => p.ApplicationUser.Id == user.Id).ApplicationUser;
+
+            person.ApplicationUser = applicationUser;
+            List < Language > personLanguages = new List<Language>();
+            foreach (var lang in languages.Split(',').ToList())
+            {
+                personLanguages.Add(_personRepository.GetLanguage(lang));
+            }
+            person.Languages = personLanguages;
+            ModelState.Clear();
+            TryValidateModel(person);
 
 
+            if (ModelState.IsValid)
+            {
+                _personRepository.Update(person);
+                return RedirectToAction("SetupPersonData");
+            }
+
+            return View("SetupPersonData", person);
+        }
         //
         // GET: /Account/Login
         [AllowAnonymous]
@@ -165,7 +213,11 @@ namespace LeagueOfLegendsFindTeamApp.Controllers
                 {
                     UserName = model.Username,
                     Blocked = false,
-                    Email = model.Email
+                    Email = model.Email,
+                    GamerProfile = new GamerProfile(),
+                    Contact = new Contact(),
+                    Person = new Person()
+
                 };
                 IdentityResult result = await UserManager.CreateAsync(user, model.Password);
                 if (result.Succeeded)

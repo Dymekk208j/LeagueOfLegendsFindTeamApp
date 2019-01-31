@@ -21,8 +21,10 @@ namespace LeagueOfLegendsFindTeamApp
             container.RegisterType<IRepository<Region, int>, RegionRepository>();
             container.RegisterType<IRepository<Image, int>, ImageRepository>();
             container.RegisterType<IRepository<League, int>, LeagueRepository>();
+            container.RegisterType<IRepository<Person, int>, PersonRepository>();
 
-            container.RegisterType<AccountController>(new InjectionConstructor());
+
+            container.RegisterType<AccountController>(new InjectionConstructor(typeof(PersonRepository)));
             DependencyResolver.SetResolver(new UnityDependencyResolver(container));
         }
     }

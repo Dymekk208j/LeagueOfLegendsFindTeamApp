@@ -449,7 +449,14 @@ namespace LeagueOfLegendsFindTeamApp.Models.DatabaseModels.DatabaseContext
             {
                 UserName = "Dymek",
                 Blocked = false,
-                Email = "Kontakt@damiandziura.pl"
+                Email = "Kontakt@damiandziura.pl",
+                GamerProfile = new GamerProfile(),
+                Contact = new Contact(),
+                Person = new Person()
+                {
+                    FirstName = "Damian"
+                }
+
             };
 
             userManager.Create(user, "Damian13!");

@@ -13,22 +13,16 @@ namespace LeagueOfLegendsFindTeamApp.Models.DatabaseModels
         public int PersonId { get; set; }
 
         [Display(Name = "First Name")]
-        [Required(ErrorMessage = "First Name cannot be empty")]
         [MinLength(3, ErrorMessage = "First Name cannot be shorter then 3 chars")]
         public string FirstName { get; set; }
 
         [Display(Name = "Last Name")]
         public string LastName { get; set; }
 
-        [Display(Name = "Nickname")]
-        public string Nickname { get; set; }
-
         [Display(Name = "Languages")]
-        [Required(ErrorMessage = "Languages cannot be empty")]
-        public IEnumerable<Language> Languages { get; set; }
+        public List<Language> Languages { get; set; }
 
         [Display(Name = "Country")]
-        [Required(ErrorMessage = "Country cannot be empty")]
         public string Country { get; set; }
 
         [Display(Name = "Gender")]
@@ -36,5 +30,20 @@ namespace LeagueOfLegendsFindTeamApp.Models.DatabaseModels
 
         [Required]
         public virtual ApplicationUser ApplicationUser { get; set; }
+
+
+        public List<Language> GetLanguages()
+        {
+            List<Language> lang = new List<Language>()
+            {
+                new Language(){LanguageId = 1, Name = "test"},
+                new Language(){LanguageId = 1, Name = "test2"},
+                new Language(){LanguageId = 1, Name = "test3"},
+            };
+            return lang;
+            // return _languageRepository.GetAll().ToList();
+        }
     }
+
+   
 }
