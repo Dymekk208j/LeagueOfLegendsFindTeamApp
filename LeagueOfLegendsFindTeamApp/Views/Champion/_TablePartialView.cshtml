@@ -1,0 +1,25 @@
+﻿@model List<LeagueOfLegendsFindTeamApp.Models.DatabaseModels.Champion>
+  
+<div class="card-header">
+    <h5>Champions list</h5>
+</div>
+<div class="card-body">
+    <table id="ChampionsTable" class="table table-sm table-bordered table-hover table-striped">
+        <thead>
+            <tr>
+                <th style="width: 5%">Id</th>
+                <th>Champion name</th>
+                <th style="width: 60px">Portrait</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var champion in Model)
+            {
+                <tr onclick="GoToModificationForm(@Html.Raw(champion.ChampionId))">
+                    <td class="pl-2 align-middle" style="cursor: pointer;">@Html.Name(champion.ChampionId.ToString() + ". ")</td>
+                    <td class="pl-2 align-middle" style="cursor: pointer;">@Html.Name(champion.Name)</td>
+                    <td class="pl-2 align-middle" style="cursor: pointer;"><img src="@Html.Raw(champion.Icon.Url)" class="image" alt="Image" width="50" height="50" /></td>
+                </tr>
+            }
+    </table>
+</div>

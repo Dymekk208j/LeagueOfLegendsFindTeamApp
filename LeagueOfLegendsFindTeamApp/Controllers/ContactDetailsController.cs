@@ -5,7 +5,7 @@ using Microsoft.AspNet.Identity;
 
 namespace LeagueOfLegendsFindTeamApp.Controllers
 {
-    //[Authorize]
+    [Authorize]
     public class ContactDetailsController : Controller
     {
 

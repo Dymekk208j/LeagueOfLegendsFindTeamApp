@@ -17,10 +17,126 @@ namespace LeagueOfLegendsFindTeamApp.Models.DatabaseModels.DatabaseContext
             CreateQueueTypes(context);
             CreateTeamTypes(context);
             CreateRegions(context);
+            CreateChampions(context);
 
 
         }
+        
+        private void CreateChampions(ApplicationDbContext context)
+        {
 
+            string mainUrl = "http://ddragon.leagueoflegends.com/cdn/6.24.1/img/champion/";
+            List<Image> championsImages = new List<Image>
+            {
+                new Image()
+                {
+                    FileName = "Aatrox.png",
+                    Title = "Aatrox"
+                },
+                new Image()
+                {
+                    FileName = "Ahri.png",
+                    Title = "Ahri"
+                },
+                new Image()
+                {
+                    FileName = "Akali.png",
+                    Title = "Akali"
+                },
+                new Image()
+                {
+                    FileName = "Alistar.png",
+                    Title = "Alistar"
+                },
+                new Image()
+                {
+                    FileName = "Amumu.png",
+                    Title = "Amumu"
+                },
+               
+            };
+
+            championsImages.ForEach(g => g.Url = mainUrl + g.FileName);
+            championsImages.ForEach(g => g.ImageType = ImageType.ChampionIcon);
+            championsImages.ForEach(g => context.Images.Add(g));
+            context.SaveChanges();
+
+            mainUrl = "http://ddragon.leagueoflegends.com/cdn/img/champion/loading/";
+            List<Image> championsPortraits = new List<Image>
+            {
+                new Image()
+                {
+                    FileName = "Aatrox_0.jpg",
+                    Title = "Aatrox screen art"
+                },
+                new Image()
+                {
+                    FileName = "Ahri_0.jpg",
+                    Title = "Ahri screen art"
+                },
+                new Image()
+                {
+                    FileName = "Akali_0.jpg",
+                    Title = "Akali screen art"
+                },
+                new Image()
+                {
+                    FileName = "Alistar_0.jpg",
+                    Title = "Alistar screen art"
+                },
+                new Image()
+                {
+                    FileName = "Amumu_0.jpg",
+                    Title = "Amumu screen art"
+                },
+            };
+
+            championsPortraits.ForEach(g => g.Url = mainUrl + g.FileName);
+            championsPortraits.ForEach(g => g.ImageType = ImageType.ChampionPortrait);
+            championsPortraits.ForEach(g => context.Images.Add(g));
+            context.SaveChanges();
+
+
+            List<Champion> champions = new List<Champion>
+            {
+                new Champion()
+                {
+                    Name = "Aatrox",
+                    Icon = context.Images.FirstOrDefault(j => j.FileName == "Aatrox.png"),
+                    Portrait = context.Images.FirstOrDefault(j => j.FileName == "Aatrox_0.jpg")
+                },
+                new Champion()
+                {
+                    Name = "Ahri",
+                    Icon = context.Images.FirstOrDefault(j => j.FileName == "Ahri.png"),
+                    Portrait = context.Images.FirstOrDefault(j => j.FileName == "Ahri_0.jpg")
+                },
+                new Champion()
+                {
+                    Name = "Akali",
+                    Icon = context.Images.FirstOrDefault(j => j.FileName == "Akali.png"),
+                    Portrait = context.Images.FirstOrDefault(j => j.FileName == "Akali_0.jpg")
+                },
+                new Champion()
+                {
+                    Name = "Alistar",
+                    Icon = context.Images.FirstOrDefault(j => j.FileName == "Alistar.png"),
+                    Portrait = context.Images.FirstOrDefault(j => j.FileName == "Alistar_0.jpg")
+                },
+                new Champion()
+                {
+                    Name = "Amumu",
+                    Icon = context.Images.FirstOrDefault(j => j.FileName == "Amumu.png"),
+                    Portrait = context.Images.FirstOrDefault(j => j.FileName == "Amumu_0.jpg")
+                }
+            };
+
+
+
+            champions.ForEach(g => context.Champions.Add(g));
+            context.SaveChanges();
+        }
+        
         private static void CreateRegions(ApplicationDbContext context)
         {
             List<Region> regions = new List<Region>

@@ -23,6 +23,7 @@ namespace LeagueOfLegendsFindTeamApp
             container.RegisterType<IRepository<League, int>, LeagueRepository>();
             container.RegisterType<IRepository<Person, int>, PersonRepository>();
             container.RegisterType<IRepository<Contact, int>, ContactRepository>();
+            container.RegisterType<IRepository<Champion, int>, ChampionRepository>();
 
 
             container.RegisterType<AccountController>(new InjectionConstructor(typeof(PersonRepository)));
