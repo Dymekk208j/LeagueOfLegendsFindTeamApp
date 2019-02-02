@@ -25,7 +25,7 @@ namespace LeagueOfLegendsFindTeamApp.Models.DatabaseModels
         public Person Person { get; set; }
         public GamerProfile GamerProfile { get; set; }
 
-        public Contact Contact { get; set; }
+        public Contact ContactDetails { get; set; }
         public static string GetUserName(string guid)
         {
             ApplicationDbContext applicationDbContext = new ApplicationDbContext();

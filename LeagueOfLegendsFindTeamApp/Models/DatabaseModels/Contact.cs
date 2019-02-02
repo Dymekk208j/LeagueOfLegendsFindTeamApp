@@ -20,5 +20,6 @@ namespace LeagueOfLegendsFindTeamApp.Models.DatabaseModels
 
         [Required]
         public virtual ApplicationUser ApplicationUser { get; set; }
+
     }
 }

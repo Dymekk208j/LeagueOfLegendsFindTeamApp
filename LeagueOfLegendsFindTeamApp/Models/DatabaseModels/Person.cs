@@ -30,20 +30,8 @@ namespace LeagueOfLegendsFindTeamApp.Models.DatabaseModels
 
         [Required]
         public virtual ApplicationUser ApplicationUser { get; set; }
-
-
-        public List<Language> GetLanguages()
-        {
-            List<Language> lang = new List<Language>()
-            {
-                new Language(){LanguageId = 1, Name = "test"},
-                new Language(){LanguageId = 1, Name = "test2"},
-                new Language(){LanguageId = 1, Name = "test3"},
-            };
-            return lang;
-            // return _languageRepository.GetAll().ToList();
-        }
+        
     }
 
-   
+
 }

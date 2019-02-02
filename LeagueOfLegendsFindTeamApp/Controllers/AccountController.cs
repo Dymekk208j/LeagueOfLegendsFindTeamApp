@@ -215,7 +215,7 @@ namespace LeagueOfLegendsFindTeamApp.Controllers
                     Blocked = false,
                     Email = model.Email,
                     GamerProfile = new GamerProfile(),
-                    Contact = new Contact(),
+                    ContactDetails = new Contact(),
                     Person = new Person()
 
                 };

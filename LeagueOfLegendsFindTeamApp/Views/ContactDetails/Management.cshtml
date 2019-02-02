@@ -1,0 +1,29 @@
+﻿@model LeagueOfLegendsFindTeamApp.Models.DatabaseModels.Contact
+
+<div class="col-lg-10">
+    <div class="card">
+        <div class="card-header">Contact Details Management</div>
+        <div class="card-body">
+            @Html.ValidationSummary(false, "", new { @class = "ml-3 text-danger" })
+            @using (Html.BeginForm("UpdateContactDetails", "ContactDetails"))
+            {
+                    @Html.HiddenFor(m => m.ContactId)
+                    @Html.HiddenFor(m => m.ApplicationUser)
+
+                    @Html.LabelFor(m => m.DiscordId)
+                    @Html.EditorFor(m => m.DiscordId, new { htmlAttributes = new { @class = "form-control mb-3" } })
+
+                    @Html.LabelFor(m => m.SkypeId)
+                    @Html.EditorFor(m => m.SkypeId, new { htmlAttributes = new { @class = "form-control mb-3" } })
+
+                    @Html.LabelFor(m => m.PhoneNo)
+                    @Html.EditorFor(m => m.PhoneNo, new { htmlAttributes = new { @class = "form-control mb-3" } })
+
+                    @Html.LabelFor(m => m.FacebookLink)
+                    @Html.EditorFor(m => m.FacebookLink, new { htmlAttributes = new { @class = "form-control mb-3" } })
+
+                    <button type="submit" class="btn btn-sm btn-success float-right mt-5"><i class="zmdi zmdi-save mr-2" id="BtnSave" name="BtnSave"></i>Save</button>
+             }
+        </div>
+    </div>
+</div>

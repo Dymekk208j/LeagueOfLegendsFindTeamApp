@@ -451,7 +451,13 @@ namespace LeagueOfLegendsFindTeamApp.Models.DatabaseModels.DatabaseContext
                 Blocked = false,
                 Email = "Kontakt@damiandziura.pl",
                 GamerProfile = new GamerProfile(),
-                Contact = new Contact(),
+                ContactDetails = new Contact()
+                {
+                    DiscordId = "DiscordID",
+                    FacebookLink = "FacebookLink",
+                    PhoneNo = "123-123-123",
+                    SkypeId = "SkypeID"
+                },
                 Person = new Person()
                 {
                     FirstName = "Damian"
