@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data.Entity;
 using System.Linq;
 using LeagueOfLegendsFindTeamApp.Models.DatabaseModels;
 using Unity.Attributes;
@@ -37,6 +38,7 @@ namespace LeagueOfLegendsFindTeamApp.Repository
         public bool Add(Person entity)
         {
             Context.Persons.Add(entity);
+            Context.Entry(entity.ApplicationUser).State = EntityState.Unchanged;
             return Context.SaveChanges() > 0;
         }
 

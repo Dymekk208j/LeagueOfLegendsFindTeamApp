@@ -33,6 +33,7 @@ namespace LeagueOfLegendsFindTeamApp.Repository
         public bool Add(Contact entity)
         {
             Context.Contacts.Add(entity);
+            Context.Entry(entity.ApplicationUser).State = EntityState.Unchanged;
             return Context.SaveChanges() > 0;
         }
 

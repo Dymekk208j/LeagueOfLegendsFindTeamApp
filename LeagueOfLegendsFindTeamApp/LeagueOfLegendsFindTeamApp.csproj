@@ -869,6 +869,7 @@
     <Content Include="Views\Champion\_SelectIconPartialView.cshtml" />
     <Content Include="Views\Champion\_SelectPortraitPartialView.cshtml" />
     <Content Include="Views\Champion\_CreatePartialView.cshtml" />
+    <Content Include="Views\Champion\_ModificationPartialView.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

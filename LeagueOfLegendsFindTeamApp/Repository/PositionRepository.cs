@@ -1,8 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data.Entity;
 using System.Linq;
 using LeagueOfLegendsFindTeamApp.Models.DatabaseModels;
 using Unity.Attributes;
+using WebGrease.Css.Extensions;
 
 namespace LeagueOfLegendsFindTeamApp.Repository
 {
@@ -28,6 +30,7 @@ namespace LeagueOfLegendsFindTeamApp.Repository
         public bool Add(Position entity)
         {
             Context.Positions.Add(entity);
+            entity.GamerProfiles.ForEach(g => Context.Entry(g).State = EntityState.Unchanged);
             return Context.SaveChanges() > 0;
         }
 

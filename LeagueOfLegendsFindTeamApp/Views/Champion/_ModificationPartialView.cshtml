@@ -1,12 +1,12 @@
 ﻿@model LeagueOfLegendsFindTeamApp.Models.DatabaseModels.Champion
 
 <div class="card-header">
-    Create new champion
+    Update champion <strong>@Html.Raw(Model.Name)</strong>
 </div>
 <div class="card-body">
     @Html.ValidationSummary(false, "", new { @class = "ml-3 text-danger" })
     @{
-        using (Ajax.BeginForm("CreateChampion", "Champion",
+        using (Ajax.BeginForm("UpdateChampion", "Champion",
             new AjaxOptions { HttpMethod = "post", UpdateTargetId = "ChampionsCard", InsertionMode = InsertionMode.Replace, OnSuccess = "LoadTable()" },
             new { id = "ChampionsCard" }))
         {
@@ -62,11 +62,14 @@
             @Html.EditorFor(m => m.Name, new { htmlAttributes = new { @class = "form-control mb-3" } })
 
 
-            <button type="submit" class="btn btn-sm btn-success float-right mt-5"><i class="zmdi zmdi-upload mr-2" id="BtnCreate" name="BtnCreate"></i>Create</button>
+            <button type="submit" class="btn btn-sm btn-success float-right mt-5"><i class="zmdi zmdi-save mr-2" id="BtnUpdate" name="BtnUpdate"></i>Update</button>
+        
+            <div style="text-align: center;">
+                <button type="button" class="btn btn-sm btn-danger mt-5" name="BtnReturn" id="btnRemove" onclick="RemoveChampion(@Html.Raw(Model.ChampionId))"><i class="zmdi zmdi-delete mr-2"></i>Remove</button>
+            </div>
+
+        <button type="button" class="btn btn-sm btn-secondary float-left mt-5" name="BtnReturn" id="BtnReturn" onclick="GoToTableForm()"><i class="zmdi zmdi-long-arrow-return mr-2"></i>Return</button>
         }
-
-        <button type="button" class="btn btn-sm btn-secondary float-left mt-5" name="BtnReturn" id="BtnReturn" onclick="GoToLeaguesView()"><i class="zmdi zmdi-long-arrow-return mr-2"></i>Return</button>
-
     }
 </div>
 

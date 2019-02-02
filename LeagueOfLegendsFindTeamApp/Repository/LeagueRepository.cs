@@ -1,7 +1,8 @@
-﻿using System;
+﻿using LeagueOfLegendsFindTeamApp.Models.DatabaseModels;
+using System;
 using System.Collections.Generic;
+using System.Data.Entity;
 using System.Linq;
-using LeagueOfLegendsFindTeamApp.Models.DatabaseModels;
 using Unity.Attributes;
 
 namespace LeagueOfLegendsFindTeamApp.Repository
@@ -29,6 +30,9 @@ namespace LeagueOfLegendsFindTeamApp.Repository
         public bool Add(League entity)
         {
             Context.Leagues.Add(entity);
+
+            Context.Entry(entity.Logo).State = EntityState.Unchanged;
+
             return Context.SaveChanges() > 0;
         }
 

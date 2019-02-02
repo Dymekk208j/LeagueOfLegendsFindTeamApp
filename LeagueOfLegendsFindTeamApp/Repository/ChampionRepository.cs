@@ -29,8 +29,11 @@ namespace LeagueOfLegendsFindTeamApp.Repository
 
           public bool Add(Champion entity)
           {
+             
               Context.Champions.Add(entity);
-              return Context.SaveChanges() > 0;
+              Context.Entry(entity.Icon).State = EntityState.Unchanged;
+              Context.Entry(entity.Portrait).State = EntityState.Unchanged;
+            return Context.SaveChanges() > 0;
           }
 
           public bool Remove(Champion entity)
@@ -67,9 +70,12 @@ namespace LeagueOfLegendsFindTeamApp.Repository
           {
               try
               {
-                  //TODO: Sprawdzic czy to w ogole dziala
-                  Context.Entry(entity).State = EntityState.Modified;
-                  return Context.SaveChanges() > 0;
+                  Champion champion = Context.Champions.Single(a => a.ChampionId == entity.ChampionId) ?? throw new Exception($"Not found id: {entity.ChampionId}");
+                  champion.Name = entity.Name;
+                  champion.Icon = Context.Images.Single(a => a.ImageId == entity.Icon.ImageId);
+                  champion.Portrait = Context.Images.Single(a => a.ImageId == entity.Portrait.ImageId);
+            
+                return Context.SaveChanges() > 0;
               }
               catch (Exception ex)
               {

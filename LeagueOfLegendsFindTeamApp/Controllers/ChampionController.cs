@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 using System.Web.Mvc;
 using LeagueOfLegendsFindTeamApp.Models.DatabaseModels;
@@ -56,6 +57,75 @@ namespace LeagueOfLegendsFindTeamApp.Controllers
             };
 
             return PartialView("_CreatePartialView", champion);
+        }
+
+        [HttpGet]
+        public ActionResult GetModificationPartialView(int championId)
+        {
+            return PartialView("_ModificationPartialView", _championRepository.Get(championId));
+        }
+
+        [HttpPost]
+        public ActionResult CreateChampion(Champion champion)
+        {
+            try
+            {
+                champion.Icon = _imageRepository.Get(champion.Icon.ImageId);
+                champion.Portrait = _imageRepository.Get(champion.Portrait.ImageId);
+
+                ModelState.Clear();
+                TryValidateModel(champion);
+            }
+            catch (InvalidOperationException ex)
+            {
+                Console.WriteLine(ex);
+                ModelState.AddModelError("", @"You have to select icon and portrait");
+            }
+
+
+            if (ModelState.IsValid)
+            {
+                _championRepository.Add(champion);
+
+                return PartialView("_TablePartialView", _championRepository.GetAll());
+            }
+
+            return PartialView("_CreatePartialView", champion);
+        }
+
+        [HttpPost]
+        public ActionResult UpdateChampion(Champion champion)
+        {
+            try
+            {
+                champion.Icon = _imageRepository.Get(champion.Icon.ImageId);
+                champion.Portrait = _imageRepository.Get(champion.Portrait.ImageId);
+
+                ModelState.Clear();
+                TryValidateModel(champion);
+            }
+            catch (InvalidOperationException ex)
+            {
+                Console.WriteLine(ex);
+                ModelState.AddModelError("", @"You have to select icon and portrait");
+            }
+
+
+            if (ModelState.IsValid)
+            {
+                _championRepository.Update(champion);
+
+                return PartialView("_TablePartialView", _championRepository.GetAll());
+            }
+
+            return PartialView("_ModificationPartialView", champion);
+        }
+
+        [HttpGet]
+        public ActionResult RemoveChampion(int championId)
+        {
+            _championRepository.Remove(championId);
+            return PartialView("_TablePartialView", _championRepository.GetAll());
         }
     }
 }
