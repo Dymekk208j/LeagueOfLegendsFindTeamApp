@@ -866,6 +866,9 @@
     <Content Include="Views\ContactDetails\Management.cshtml" />
     <Content Include="Views\Champion\Management.cshtml" />
     <Content Include="Views\Champion\_TablePartialView.cshtml" />
+    <Content Include="Views\Champion\_SelectIconPartialView.cshtml" />
+    <Content Include="Views\Champion\_SelectPortraitPartialView.cshtml" />
+    <Content Include="Views\Champion\_CreatePartialView.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

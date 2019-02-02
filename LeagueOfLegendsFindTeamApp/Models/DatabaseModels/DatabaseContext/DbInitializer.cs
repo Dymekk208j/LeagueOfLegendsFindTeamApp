@@ -67,27 +67,27 @@ namespace LeagueOfLegendsFindTeamApp.Models.DatabaseModels.DatabaseContext
                 new Image()
                 {
                     FileName = "Aatrox_0.jpg",
-                    Title = "Aatrox screen art"
+                    Title = "Aatrox portrait"
                 },
                 new Image()
                 {
                     FileName = "Ahri_0.jpg",
-                    Title = "Ahri screen art"
+                    Title = "Ahri portrait"
                 },
                 new Image()
                 {
                     FileName = "Akali_0.jpg",
-                    Title = "Akali screen art"
+                    Title = "Akali portrait"
                 },
                 new Image()
                 {
                     FileName = "Alistar_0.jpg",
-                    Title = "Alistar screen art"
+                    Title = "Alistar portrait"
                 },
                 new Image()
                 {
                     FileName = "Amumu_0.jpg",
-                    Title = "Amumu screen art"
+                    Title = "Amumu portrait"
                 },
             };
 

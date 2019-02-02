@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.Linq;
 using System.Web.Mvc;
 using LeagueOfLegendsFindTeamApp.Models.DatabaseModels;
 using LeagueOfLegendsFindTeamApp.Repository;
@@ -29,6 +30,32 @@ namespace LeagueOfLegendsFindTeamApp.Controllers
             return PartialView("_TablePartialView", champions);
         }
 
+        [HttpGet]
+        public ActionResult GetSelectPortraitPartialView()
+        {
+            var images = _imageRepository.GetAll().Where(i => i.ImageType == ImageType.ChampionPortrait).ToList();
 
+            return PartialView("_SelectPortraitPartialView", images);
+        }
+
+        [HttpGet]
+        public ActionResult GetSelectIconPartialView()
+        {
+            var images = _imageRepository.GetAll().Where(i => i.ImageType == ImageType.ChampionIcon).ToList();
+
+            return PartialView("_SelectIconPartialView", images);
+        }
+
+        [HttpGet]
+        public ActionResult GetCreatePartialView()
+        {
+            var champion = new Champion()
+            {
+                Icon = new Image(),
+                Portrait = new Image()
+            };
+
+            return PartialView("_CreatePartialView", champion);
+        }
     }
 }

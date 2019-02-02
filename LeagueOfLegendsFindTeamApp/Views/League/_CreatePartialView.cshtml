@@ -4,7 +4,7 @@
     Create new league
 </div>
 <div class="card-body">
-    @Html.ValidationSummary(false, "", new{ @class = "ml-3 text-danger" })
+    @Html.ValidationSummary(false, "", new { @class = "ml-3 text-danger" })
     @{
         using (Ajax.BeginForm("CreateLeague", "League",
             new AjaxOptions { HttpMethod = "post", UpdateTargetId = "LeagueCard", InsertionMode = InsertionMode.Replace },
@@ -49,5 +49,3 @@
 
     }
 </div>
-
-

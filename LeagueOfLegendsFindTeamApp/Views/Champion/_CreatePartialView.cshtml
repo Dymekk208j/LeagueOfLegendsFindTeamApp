@@ -1,0 +1,73 @@
+﻿@model LeagueOfLegendsFindTeamApp.Models.DatabaseModels.Champion
+
+<div class="card-header">
+    Create new champion
+</div>
+<div class="card-body">
+    @Html.ValidationSummary(false, "", new { @class = "ml-3 text-danger" })
+    @{
+        using (Ajax.BeginForm("CreateChampion", "Champion",
+            new AjaxOptions { HttpMethod = "post", UpdateTargetId = "ChampionsCard", InsertionMode = InsertionMode.Replace },
+            new { id = "ChampionsCard" }))
+        {
+            @Html.HiddenFor(m => m.ChampionId)
+
+            <div class="row">
+                <div class="col-6">
+                    @Html.LabelFor(m => m.Icon)
+                    @Html.HiddenFor(m => m.Icon.ImageId)
+                    @Html.HiddenFor(m => m.Icon.Title)
+                    @Html.HiddenFor(m => m.Icon.Url)
+
+                    <div class="mb-3">
+                        <a href="#" data-toggle="modal" data-target="#selectIconModal">
+                            <img id="IconImage" alt="Image" class="image border" src="
+                         @if (Model.Icon.Url.IsEmpty())
+                         {
+                             @Html.Raw("https://via.placeholder.com/100x100")
+                         }
+                         else
+                         {
+                             @Html.Raw(Model.Icon.Url)
+                         }
+                         " width="100" height="100" />
+                        </a>
+                    </div>
+                </div>
+                <div class="col-6">
+                    @Html.LabelFor(m => m.Portrait)
+                    @Html.HiddenFor(m => m.Portrait.ImageId)
+                    @Html.HiddenFor(m => m.Portrait.Title)
+                    @Html.HiddenFor(m => m.Portrait.Url)
+
+                    <div class="mb-3">
+                        <a href="#" data-toggle="modal" data-target="#selectPortraitModal">
+                            <img id="PortraitImage" alt="Image" class="image border" src="
+                         @if (Model.Portrait.Url.IsEmpty())
+                         {
+                             @Html.Raw("https://via.placeholder.com/150x280")
+                         }
+                         else
+                         {
+                             @Html.Raw(Model.Portrait.Url)
+                         }
+                         " width="150" height="280" />
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+
+            @Html.LabelFor(m => m.Name)
+            @Html.EditorFor(m => m.Name, new { htmlAttributes = new { @class = "form-control mb-3" } })
+
+
+            <button type="submit" class="btn btn-sm btn-success float-right mt-5"><i class="zmdi zmdi-upload mr-2" id="BtnCreate" name="BtnCreate"></i>Create</button>
+        }
+
+        <button type="button" class="btn btn-sm btn-secondary float-left mt-5" name="BtnReturn" id="BtnReturn" onclick="GoToLeaguesView()"><i class="zmdi zmdi-long-arrow-return mr-2"></i>Return</button>
+
+    }
+</div>
+
+
