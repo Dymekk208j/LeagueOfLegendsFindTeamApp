@@ -30,14 +30,6 @@ namespace LeagueOfLegendsFindTeamApp.Models.DatabaseModels
         [Display(Name = "Confirmed Account")]
         public bool ConfirmedAccount { get; set; }
 
-        [Display(Name = "Contact details")]
-      //  [Required(ErrorMessage = "Contact details cannot be empty")]
-        public Contact ContactDetails { get; set; }
-
-        [Display(Name = "Person details")]
-        //[Required(ErrorMessage = "Person details cannot be empty")]
-        public Person Person { get; set; }
-
         [Display(Name = "Champions pool")]
         public IEnumerable<Champion> ChampionsPool { get; set; }
 

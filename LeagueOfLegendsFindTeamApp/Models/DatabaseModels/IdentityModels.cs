@@ -26,11 +26,6 @@ namespace LeagueOfLegendsFindTeamApp.Models.DatabaseModels
         public GamerProfile GamerProfile { get; set; }
 
         public Contact ContactDetails { get; set; }
-        public static string GetUserName(string guid)
-        {
-            ApplicationDbContext applicationDbContext = new ApplicationDbContext();
-            return applicationDbContext.Users.FirstOrDefault(a => a.Id == guid)?.UserName ?? " - ";
-        }
     }
 
     public class ApplicationDbContext : IdentityDbContext<ApplicationUser>
