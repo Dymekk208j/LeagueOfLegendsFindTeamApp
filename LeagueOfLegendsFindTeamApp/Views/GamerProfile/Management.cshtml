@@ -1,0 +1,220 @@
+﻿@model LeagueOfLegendsFindTeamApp.Models.DatabaseModels.GamerProfile
+
+
+@section AdditionalCss
+{
+    <link href="~/Content/bootstrap-select.css" rel="stylesheet" />
+    <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+
+}
+
+<div class="col-lg-10">
+    <div class="card">
+        <div class="card-header">Gamer Profile Management</div>
+        <div class="card-body">
+            @Html.ValidationSummary(false, "", new { @class = "ml-3 text-danger" })
+            @using (Html.BeginForm("UpdateContactDetails", "ContactDetails"))
+            {
+                @Html.HiddenFor(m => m.GamerProfileId)
+                @Html.HiddenFor(m => m.ApplicationUser)
+                @Html.HiddenFor(m => m.Portrait.Url)
+
+
+                <div class="row">
+                    <div class="col">
+                        @Html.LabelFor(m => m.Portrait)
+                        <br />
+                        <a href="#" data-toggle="modal" data-target="#selectPortraitModal" class="mb-3">
+                            <img id="PortraitImage" alt="Image" class="image border" src="
+                             @if (String.IsNullOrEmpty(Model?.Portrait?.Url))
+                             {
+                                 @Html.Raw("https://via.placeholder.com/150x150")
+                             }
+                             else
+                             {
+                                 @Html.Raw(Model.Portrait.Url)
+                             }
+                             " width="150" height="150" />
+                        </a>
+
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-6">
+                        @Html.LabelFor(m => m.InGameName)
+                        @Html.EditorFor(m => m.InGameName, new { htmlAttributes = new { @class = "form-control mb-3" } })
+                    </div>
+                    <div class="col-6">
+                        @Html.LabelFor(m => m.Region)
+                        @Html.Action("GetRegionsPartialView", "GamerProfile")
+                    </div>
+                </div>
+
+                @Html.Action("GetSelectPositionsPartialView", "GamerProfile")
+
+                <div class="row mt-5">
+                    <div class="col-4" align="center">
+
+                        <h5 class="h5">@Html.LabelFor(m => m.SoloQLeague)</h5>
+                        <p><img id="SoloQLogoImage" alt="Image" class="image" src="https://via.placeholder.com/150x150" style="width: 150px; height: 170px;"/></p>
+                        <span id="SoloQDivisionLabel">None</span>
+                        <div id="SoloQSlider"></div>
+                    </div>
+
+                    <div class="col-4" align="center">
+                        <h5 class="h5">@Html.LabelFor(m => m.FlexLeague)</h5>
+                        <p><img id="FlexLogoImage" alt="Image" class="image" src="https://via.placeholder.com/150x150" style="width: 150px; height: 170px;"/></p>
+                        <span id="FlexDivisionLabel">None</span>
+                        <div id="FlexSlider"></div>
+                    </div>
+
+                    <div class="col-4" align="center">
+                        <h5 class="h5">@Html.LabelFor(m => m.League3)</h5>
+                        <p><img id="TwistedLogoImage" alt="Image" class="image" src="https://via.placeholder.com/150x150" style="width: 150px; height: 170px;"/></p>
+                        <span id="TwistedDivisionLabel">None</span>
+                        <div id="TwistedSlider"></div>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-6">
+                        <button type="submit" class="btn btn-sm btn-success float-right mt-5" id="BtnSave" name="BtnSave"><i class="zmdi zmdi-save mr-2"></i>Save</button>
+                    </div>
+                </div>
+
+
+            }
+        </div>
+    </div>
+</div>
+
+@Html.Action("GetPortraitSelectModalPartialView", "GamerProfile")
+
+@section scripts
+{
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+
+    <script>
+
+        function GetLeagueLogoUrl(id, type) {
+            var ref = '#' + type;
+            $.ajax(
+                {
+                    url: "@Url.Action("GetLeagueLogoUrl", "GamerProfile")",
+                    data: { leagueId: id },
+                    success: function(result) {
+                        $(ref).attr('src', result);
+                    }
+                });
+        }
+
+        function GetDivisionName(id, type) {
+            var ref = '#' + type;
+            $.ajax(
+                {
+                    url: "@Url.Action("GetDivisionName", "GamerProfile")",
+                    data: { leagueId: id },
+                    success: function(result) {
+                        $(ref).text(result);
+                    }
+                });
+        }
+
+        function SelectNewPortrait(id, url) {
+            $('#PortraitImage').attr('src', url);
+            $('#Portrait_ImageId').attr('value', id);
+        }
+
+        function getPositionsVal() {
+            $('#PrimaryPosition_PositionId').val($('#PrimaryPositionSelect').val());
+            $('#SecondaryPosition_PositionId').val($('#SecondaryPositionSelect').val());
+        }
+    </script>
+
+    <script name="dropDownInit">
+        $('#PrimaryPositionSelect').select2({
+            selectOnClose: true
+        });
+
+        $('#SecondaryPositionSelect').select2({
+            selectOnClose: true
+        });
+
+        $('#RegionSelect').select2({
+            selectOnClose: true
+        });
+    </script>
+
+    <script name="SoloQInit">
+        $( function() {
+            $("#SoloQSlider").slider({
+                min: 0,
+                max: 36,
+                step: 1,
+                value: @Html.Raw(Model.SoloQLeague.LeagueValue),
+                change: function () {
+                    GetLeagueLogoUrl($("#SoloQSlider").slider("value"), 'SoloQLogoImage');
+                    GetDivisionName($("#SoloQSlider").slider("value"), 'SoloQDivisionLabel');
+                },
+                slide: function () {
+                    GetLeagueLogoUrl($("#SoloQSlider").slider("value"), 'SoloQLogoImage');
+                    GetDivisionName($("#SoloQSlider").slider("value"), 'SoloQDivisionLabel');
+                },
+                create: function() {
+                    GetLeagueLogoUrl($("#SoloQSlider").slider("value"), 'SoloQLogoImage');
+                    GetDivisionName($("#SoloQSlider").slider("value"), 'SoloQDivisionLabel');
+                }
+
+            });
+        });
+    </script>
+
+    <script name="FlexInit">
+        $( function() {
+            $("#FlexSlider").slider({
+                min: 0,
+                max: 36,
+                step: 1,
+                value: @Html.Raw(Model.FlexLeague.LeagueValue),
+                change: function () {
+                    GetLeagueLogoUrl($("#FlexSlider").slider("value"), 'FlexLogoImage');
+                    GetDivisionName($("#FlexSlider").slider("value"), 'FlexDivisionLabel');
+                },
+                slide: function () {
+                    GetLeagueLogoUrl($("#FlexSlider").slider("value"), 'FlexLogoImage');
+                    GetDivisionName($("#FlexSlider").slider("value"), 'FlexDivisionLabel');
+                },
+                create: function() {
+                    GetLeagueLogoUrl($("#FlexSlider").slider("value"), 'FlexLogoImage');
+                    GetDivisionName($("#FlexSlider").slider("value"), 'FlexDivisionLabel');
+                }
+
+            });
+        });
+    </script>
+    
+    <script name="TwistedInit">
+        $( function() {
+            $("#TwistedSlider").slider({
+                min: 0,
+                max: 36,
+                step: 1,
+                value: @Html.Raw(Model.League3.LeagueValue),
+                change: function () {
+                    GetLeagueLogoUrl($("#TwistedSlider").slider("value"), 'TwistedLogoImage');
+                    GetDivisionName($("#TwistedSlider").slider("value"), 'TwistedDivisionLabel');
+                },
+                slide: function () {
+                    GetLeagueLogoUrl($("#TwistedSlider").slider("value"), 'TwistedLogoImage');
+                    GetDivisionName($("#TwistedSlider").slider("value"), 'TwistedDivisionLabel');
+                },
+                create: function() {
+                    GetLeagueLogoUrl($("#TwistedSlider").slider("value"), 'TwistedLogoImage');
+                    GetDivisionName($("#TwistedSlider").slider("value"), 'TwistedDivisionLabel');
+                }
+
+            });
+        });
+    </script>
+}

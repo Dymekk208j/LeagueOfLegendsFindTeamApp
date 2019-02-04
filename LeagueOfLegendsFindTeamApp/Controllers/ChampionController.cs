@@ -7,6 +7,7 @@ using LeagueOfLegendsFindTeamApp.Repository;
 
 namespace LeagueOfLegendsFindTeamApp.Controllers
 {
+    [Authorize(Roles = "Admin")]
     public class ChampionController : Controller
     {
         private readonly IRepository<Champion, int> _championRepository;

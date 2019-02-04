@@ -4,6 +4,9 @@ namespace LeagueOfLegendsFindTeamApp.Models.DatabaseModels
 {
     public enum Division
     {
+        [Display(Name = "Unranked")]
+        Unranked,
+
         [Display(Name = "Iron")]
         Iron,
 

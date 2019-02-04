@@ -1,0 +1,30 @@
+﻿@model List<LeagueOfLegendsFindTeamApp.Models.DatabaseModels.Position>
+
+<div class="row">
+    <div class="col-6">
+        Primary position
+        <br/>
+        <select id="PrimaryPositionSelect" name="PrimaryPositionSelect">
+
+        
+            @foreach (var pos in Model)
+            {
+                <option value="@Html.Raw(pos.PositionId)">@Html.Raw(pos.Name)</option>
+             
+            }
+        </select>
+    </div>
+    <div class="col-6">
+        Secondary position
+        <br/>
+        <select id="SecondaryPositionSelect" name="SecondaryPositionSelect">
+
+            
+            @foreach (var pos in Model)
+            {
+                <option value="@Html.Raw(pos.PositionId)">@Html.Raw(pos.Name)</option>
+            
+            }
+        </select>
+    </div>
+</div>

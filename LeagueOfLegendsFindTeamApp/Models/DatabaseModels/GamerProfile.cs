@@ -28,10 +28,8 @@ namespace LeagueOfLegendsFindTeamApp.Models.DatabaseModels
         public Region Region { get; set; }
 
         [Display(Name = "Confirmed Account")]
-        public bool ConfirmedAccount { get; set; }
-
-        [Display(Name = "Champions pool")]
-        public IEnumerable<Champion> ChampionsPool { get; set; }
+        public bool ConfirmedInGameName { get; set; }
+        
 
         [Display(Name = "Solo Q position")]
         public League SoloQLeague { get; set; }
@@ -41,6 +39,9 @@ namespace LeagueOfLegendsFindTeamApp.Models.DatabaseModels
 
         [Display(Name = "3 vs. 3 queue position")]
         public League League3 { get; set; }
+
+        [Display(Name = "Champions pool")]
+        public IEnumerable<Champion> ChampionsPool { get; set; }
 
         [Display(Name = "Join requests")]
         public IEnumerable<JoinRequest> JoinRequests { get; set; }

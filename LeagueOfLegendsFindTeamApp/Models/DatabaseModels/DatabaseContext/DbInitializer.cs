@@ -10,18 +10,37 @@ namespace LeagueOfLegendsFindTeamApp.Models.DatabaseModels.DatabaseContext
     {
         protected override void Seed(ApplicationDbContext context)
         {
-            CreateUsers(context);
+            CreatePlayerIcons(context);
             CreateLanguages(context);
             CreateLeagues(context);
+            CreateUsers(context);
             CreatePositions(context);
             CreateQueueTypes(context);
             CreateTeamTypes(context);
             CreateRegions(context);
             CreateChampions(context);
-
-
         }
-        
+
+        private void CreatePlayerIcons(ApplicationDbContext context)
+        {
+            string mainUrl = "http://ddragon.leagueoflegends.com/cdn/6.24.1/img/profileicon/";
+            List<Image> playerIcons = new List<Image>();
+
+            for (int i = 0; i < 28; i++)
+            {
+                playerIcons.Add(new Image()
+                {
+                    FileName = i.ToString() + ".png",
+                    Title = i.ToString(),
+                    ImageType = ImageType.PlayerIcon,
+                    Url = mainUrl + i.ToString() + ".png"
+                });
+            }
+          
+            playerIcons.ForEach(g => context.Images.Add(g));
+            context.SaveChanges();
+        }
+
         private void CreateChampions(ApplicationDbContext context)
         {
 
@@ -202,6 +221,12 @@ namespace LeagueOfLegendsFindTeamApp.Models.DatabaseModels.DatabaseContext
         {
             List<Image> ironImages = new List<Image>
             {
+                new Image()
+                {
+                    FileName = "Unranked",
+                    Title = "Unranked",
+                    Url = "https://vignette.wikia.nocookie.net/leagueoflegends/images/1/1c/Season_2013_-_Unranked.png"
+                },
                 new Image()
                 {
                     FileName = "Iron4",
@@ -463,7 +488,13 @@ namespace LeagueOfLegendsFindTeamApp.Models.DatabaseModels.DatabaseContext
             context.SaveChanges();
 
             List<League> leagues = new List<League>();
-
+            leagues.Add(new League()
+            {
+                Name = "Unranked",
+                Division = Division.Unranked,
+                LeagueValue = 0,
+                Logo = context.Images.FirstOrDefault(j => j.FileName == "Unranked")
+            });
 
             for (int i = 4; i > 0; i--)
             {
@@ -471,7 +502,7 @@ namespace LeagueOfLegendsFindTeamApp.Models.DatabaseModels.DatabaseContext
                 {
                     Name = "Iron " + GetRomanNumber(i),
                     Division = Division.Iron,
-                    LeagueValue = 37 - (5 - i),
+                    LeagueValue = 5 - i,
                     Logo = context.Images.FirstOrDefault(j => j.FileName == "iron" + i.ToString())
                 });
 
@@ -480,7 +511,7 @@ namespace LeagueOfLegendsFindTeamApp.Models.DatabaseModels.DatabaseContext
                 {
                     Name = "Bronze " + GetRomanNumber(i),
                     Division = Division.Bronze,
-                    LeagueValue = 33 - (5 - i),
+                    LeagueValue = 9 - i,
                     Logo = context.Images.FirstOrDefault(j => j.FileName == "bronze" + i.ToString())
                 });
 
@@ -489,7 +520,7 @@ namespace LeagueOfLegendsFindTeamApp.Models.DatabaseModels.DatabaseContext
                 {
                     Name = "Silver " + GetRomanNumber(i),
                     Division = Division.Silver,
-                    LeagueValue = 29 - (5 - i),
+                    LeagueValue = 13 - i,
                     Logo = context.Images.FirstOrDefault(j => j.FileName == "silver" + i.ToString())
                 });
 
@@ -497,7 +528,7 @@ namespace LeagueOfLegendsFindTeamApp.Models.DatabaseModels.DatabaseContext
                 {
                     Name = "Gold " + GetRomanNumber(i),
                     Division = Division.Gold,
-                    LeagueValue = 25 - (5 - i),
+                    LeagueValue = 17 - i, 
                     Logo = context.Images.FirstOrDefault(j => j.FileName == "gold" + i.ToString())
                 });
 
@@ -505,7 +536,7 @@ namespace LeagueOfLegendsFindTeamApp.Models.DatabaseModels.DatabaseContext
                 {
                     Name = "Platinum " + GetRomanNumber(i),
                     Division = Division.Platinum,
-                    LeagueValue = 21 - (5 - i),
+                    LeagueValue = 21 - i,
                     Logo = context.Images.FirstOrDefault(j => j.FileName == "platinum" + i.ToString())
                 });
 
@@ -513,7 +544,7 @@ namespace LeagueOfLegendsFindTeamApp.Models.DatabaseModels.DatabaseContext
                 {
                     Name = "Diamond " + GetRomanNumber(i),
                     Division = Division.Diamond,
-                    LeagueValue = 17 - (5 - i),
+                    LeagueValue = 25 - i,
                     Logo = context.Images.FirstOrDefault(j => j.FileName == "diamond" + i.ToString())
                 });
 
@@ -521,7 +552,7 @@ namespace LeagueOfLegendsFindTeamApp.Models.DatabaseModels.DatabaseContext
                 {
                     Name = "Master - Split " + GetRomanNumber(i),
                     Division = Division.Master,
-                    LeagueValue = 13 - (5 - i),
+                    LeagueValue = 29 - i,
                     Logo = context.Images.FirstOrDefault(j => j.FileName == "master" + i.ToString())
                 });
 
@@ -529,7 +560,7 @@ namespace LeagueOfLegendsFindTeamApp.Models.DatabaseModels.DatabaseContext
                 {
                     Name = "Grandmaster - Split " + GetRomanNumber(i),
                     Division = Division.GrandMaster,
-                    LeagueValue = 9 - (5 - i),
+                    LeagueValue = 33 - i,
                     Logo = context.Images.FirstOrDefault(j => j.FileName == "grandMaster" + i.ToString())
                 });
 
@@ -537,12 +568,14 @@ namespace LeagueOfLegendsFindTeamApp.Models.DatabaseModels.DatabaseContext
                 {
                     Name = "Challenger - Split " + GetRomanNumber(i),
                     Division = Division.Challenger,
-                    LeagueValue = 5 - (5 - i),
+                    LeagueValue = 37 - i,
                     Logo = context.Images.FirstOrDefault(j => j.FileName == "challenger" + i.ToString())
                 });
             }
             leagues.ForEach(g => context.Leagues.Add(g));
             context.SaveChanges();
+
+            
         }
 
         private static void CreateLanguages(ApplicationDbContext context)
@@ -566,7 +599,12 @@ namespace LeagueOfLegendsFindTeamApp.Models.DatabaseModels.DatabaseContext
                 UserName = "Dymek",
                 Blocked = false,
                 Email = "Kontakt@damiandziura.pl",
-                GamerProfile = new GamerProfile(),
+                GamerProfile = new GamerProfile()
+                {
+                    SoloQLeague = context.Leagues.First(m => m.LeagueValue == 0),
+                    FlexLeague = context.Leagues.First(m => m.LeagueValue == 0),
+                    League3 = context.Leagues.First(m => m.LeagueValue == 0)
+                },
                 ContactDetails = new Contact()
                 {
                     DiscordId = "DiscordID",

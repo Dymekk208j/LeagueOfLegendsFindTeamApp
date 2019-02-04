@@ -1,0 +1,8 @@
+﻿@model List<LeagueOfLegendsFindTeamApp.Models.DatabaseModels.Region>
+
+<select id="RegionSelect" name="RegionSelect">
+    @foreach (var region in Model)
+    {
+        <option value="@Html.Raw(region.RegionId)">@Html.Raw(region.Name)</option>
+    }
+</select>
