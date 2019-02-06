@@ -54,7 +54,7 @@ namespace LeagueOfLegendsFindTeamApp.Controllers
             {
                 _repository.Update(league);
 
-                return PartialView("_LeaguesPartialView", _repository.GetAll());
+                return RedirectToAction("GetLeaguesPartialView");
             }
 
             return PartialView("_ModificationPartialView", league);
@@ -65,7 +65,7 @@ namespace LeagueOfLegendsFindTeamApp.Controllers
         {
             _repository.Remove(leagueId);
 
-            return PartialView("_LeaguesPartialView", _repository.GetAll());
+            return RedirectToAction("GetLeaguesPartialView");
         }
 
         [HttpGet]
@@ -98,7 +98,7 @@ namespace LeagueOfLegendsFindTeamApp.Controllers
             {
                 _repository.Add(league);
 
-                return PartialView("_LeaguesPartialView", _repository.GetAll());
+                return RedirectToAction("GetLeaguesPartialView");
             }
 
             return PartialView("_CreatePartialView", league);

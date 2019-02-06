@@ -13,12 +13,12 @@ namespace LeagueOfLegendsFindTeamApp.Models.DatabaseModels.DatabaseContext
             CreatePlayerIcons(context);
             CreateLanguages(context);
             CreateLeagues(context);
-            CreateUsers(context);
             CreatePositions(context);
             CreateQueueTypes(context);
             CreateTeamTypes(context);
             CreateRegions(context);
             CreateChampions(context);
+            CreateUsers(context);
         }
 
         private void CreatePlayerIcons(ApplicationDbContext context)
@@ -599,12 +599,6 @@ namespace LeagueOfLegendsFindTeamApp.Models.DatabaseModels.DatabaseContext
                 UserName = "Dymek",
                 Blocked = false,
                 Email = "Kontakt@damiandziura.pl",
-                GamerProfile = new GamerProfile()
-                {
-                    SoloQLeague = context.Leagues.First(m => m.LeagueValue == 0),
-                    FlexLeague = context.Leagues.First(m => m.LeagueValue == 0),
-                    League3 = context.Leagues.First(m => m.LeagueValue == 0)
-                },
                 ContactDetails = new Contact()
                 {
                     DiscordId = "DiscordID",
@@ -616,9 +610,18 @@ namespace LeagueOfLegendsFindTeamApp.Models.DatabaseModels.DatabaseContext
                 {
                     FirstName = "Damian"
                 }
-
             };
 
+            user.GamerProfile = new GamerProfile()
+            {
+                SoloQLeague = context.Leagues.First(m => m.LeagueValue == 0),
+                FlexLeague = context.Leagues.First(m => m.LeagueValue == 0),
+                League3 = context.Leagues.First(m => m.LeagueValue == 0),
+                PrimaryPosition = context.Positions.First(m => m.Name == "Top"),
+                SecondaryPosition = context.Positions.First(m => m.Name == "Top"),
+                Region = context.Regions.First(m => m.RegionId == 1),
+                ApplicationUser = user
+            };
             userManager.Create(user, "Damian13!");
 
             RoleManager<IdentityRole> roleManager = new RoleManager<IdentityRole>(new RoleStore<IdentityRole>(context));

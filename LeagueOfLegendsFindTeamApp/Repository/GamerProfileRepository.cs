@@ -129,10 +129,10 @@ namespace LeagueOfLegendsFindTeamApp.Repository
                 gamerProfile.SoloQLeague = Context.Leagues.Single(a => a.LeagueId == entity.SoloQLeague.LeagueId);
                 gamerProfile.FlexLeague = Context.Leagues.Single(a => a.LeagueId == entity.FlexLeague.LeagueId);
                 gamerProfile.League3 = Context.Leagues.Single(a => a.LeagueId == entity.League3.LeagueId);
-                gamerProfile.ChampionsPool = entity.ChampionsPool;
-                gamerProfile.JoinRequests = entity.JoinRequests;
-                gamerProfile.TeamInvitations = entity.TeamInvitations;
-                gamerProfile.ApplicationUser = entity.ApplicationUser;
+             //   gamerProfile.ChampionsPool = entity.ChampionsPool;
+            //    gamerProfile.JoinRequests = entity.JoinRequests;
+            //    gamerProfile.TeamInvitations = entity.TeamInvitations;
+             //   gamerProfile.ApplicationUser = entity.ApplicationUser;
 
                 return Context.SaveChanges() > 0;
             }
@@ -167,7 +167,10 @@ namespace LeagueOfLegendsFindTeamApp.Repository
         {
             return Context.Images.Where(img => img.ImageType == ImageType.PlayerIcon).ToList();
         }
-
+        public Image GetPortrait(int imageId)
+        {
+            return Context.Images.First(img => img.ImageId == imageId);
+        }
         public string GetLeagueLogoUrl(int leagueId)
         {
             return Context.Leagues.Include("Logo").First(i => i.LeagueValue == leagueId).Logo.Url;
@@ -176,6 +179,21 @@ namespace LeagueOfLegendsFindTeamApp.Repository
         public string GetDivisionName(int leagueId)
         {
             return Context.Leagues.Include("Logo").First(i => i.LeagueValue == leagueId).Name;
+        }
+
+        public League GetLeague(int leagueId)
+        {
+            return Context.Leagues.Include("Logo").First(a => a.LeagueId == leagueId) ?? throw new InvalidOperationException();
+        }
+
+        public Region GetRegion(int regionId)
+        {
+            return Context.Regions.First(a => a.RegionId == regionId) ?? throw new InvalidOperationException();
+        }
+
+        public Position GetPosition(int positionId)
+        {
+            return Context.Positions.First(a => a.PositionId == positionId) ?? throw new InvalidOperationException();
         }
     }
 }

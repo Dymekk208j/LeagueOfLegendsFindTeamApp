@@ -5,7 +5,6 @@
 {
     <link href="~/Content/bootstrap-select.css" rel="stylesheet" />
     <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
-
 }
 
 <div class="col-lg-10">
@@ -13,11 +12,11 @@
         <div class="card-header">Gamer Profile Management</div>
         <div class="card-body">
             @Html.ValidationSummary(false, "", new { @class = "ml-3 text-danger" })
-            @using (Html.BeginForm("UpdateContactDetails", "ContactDetails"))
+            @using (Html.BeginForm("UpdateGamerProfile", "GamerProfile"))
             {
                 @Html.HiddenFor(m => m.GamerProfileId)
                 @Html.HiddenFor(m => m.ApplicationUser)
-                @Html.HiddenFor(m => m.Portrait.Url)
+                @Html.HiddenFor(m => m.Portrait.ImageId)
 
 
                 <div class="row">
@@ -47,15 +46,17 @@
                     </div>
                     <div class="col-6">
                         @Html.LabelFor(m => m.Region)
+                        @Html.HiddenFor(m => m.Region.RegionId)
                         @Html.Action("GetRegionsPartialView", "GamerProfile")
                     </div>
                 </div>
-
+                @Html.HiddenFor(model => model.PrimaryPosition.PositionId)
+                @Html.HiddenFor(model => model.SecondaryPosition.PositionId)
                 @Html.Action("GetSelectPositionsPartialView", "GamerProfile")
 
                 <div class="row mt-5">
                     <div class="col-4" align="center">
-
+                        @Html.HiddenFor(model => model.SoloQLeague.LeagueId)
                         <h5 class="h5">@Html.LabelFor(m => m.SoloQLeague)</h5>
                         <p><img id="SoloQLogoImage" alt="Image" class="image" src="https://via.placeholder.com/150x150" style="width: 150px; height: 170px;"/></p>
                         <span id="SoloQDivisionLabel">None</span>
@@ -63,22 +64,24 @@
                     </div>
 
                     <div class="col-4" align="center">
+                        @Html.HiddenFor(model => model.FlexLeague.LeagueId)
                         <h5 class="h5">@Html.LabelFor(m => m.FlexLeague)</h5>
-                        <p><img id="FlexLogoImage" alt="Image" class="image" src="https://via.placeholder.com/150x150" style="width: 150px; height: 170px;"/></p>
+                        <p><img id="FlexLogoImage" alt="Image" class="image" src="https://via.placeholder.com/150x150" style="width: 150px; height: 170px;" /></p>
                         <span id="FlexDivisionLabel">None</span>
                         <div id="FlexSlider"></div>
                     </div>
 
                     <div class="col-4" align="center">
+                        @Html.HiddenFor(model => model.League3.LeagueId)
                         <h5 class="h5">@Html.LabelFor(m => m.League3)</h5>
-                        <p><img id="TwistedLogoImage" alt="Image" class="image" src="https://via.placeholder.com/150x150" style="width: 150px; height: 170px;"/></p>
+                        <p><img id="TwistedLogoImage" alt="Image" class="image" src="https://via.placeholder.com/150x150" style="width: 150px; height: 170px;" /></p>
                         <span id="TwistedDivisionLabel">None</span>
                         <div id="TwistedSlider"></div>
                     </div>
                 </div>
 
                 <div class="row">
-                    <div class="col-6">
+                    <div class="col">
                         <button type="submit" class="btn btn-sm btn-success float-right mt-5" id="BtnSave" name="BtnSave"><i class="zmdi zmdi-save mr-2"></i>Save</button>
                     </div>
                 </div>
@@ -126,24 +129,35 @@
             $('#Portrait_ImageId').attr('value', id);
         }
 
-        function getPositionsVal() {
-            $('#PrimaryPosition_PositionId').val($('#PrimaryPositionSelect').val());
-            $('#SecondaryPosition_PositionId').val($('#SecondaryPositionSelect').val());
-        }
     </script>
+   
 
     <script name="dropDownInit">
         $('#PrimaryPositionSelect').select2({
             selectOnClose: true
         });
+        $('#PrimaryPositionSelect').on('select2:select', function (e) {
+            $('#PrimaryPosition_PositionId').val($('#PrimaryPositionSelect').val());
+        });
+        $('#PrimaryPositionSelect').val('@Html.Raw(Model.PrimaryPosition.PositionId)'); // Select the option with a value of '1'
 
         $('#SecondaryPositionSelect').select2({
             selectOnClose: true
         });
+        $('#SecondaryPositionSelect').on('select2:select', function (e) {
+            $('#SecondaryPosition_PositionId').val($('#SecondaryPositionSelect').val());
+        });
+        $('#SecondaryPositionSelect').val('@Html.Raw(Model.PrimaryPosition.PositionId)'); // Select the option with a value of '1'
+
 
         $('#RegionSelect').select2({
             selectOnClose: true
         });
+        $('#RegionSelect').on('select2:select', function (e) {
+            $('#Region_RegionId').val($('#RegionSelect').val());
+        });
+        $('#RegionSelect').val('@Html.Raw(Model.PrimaryPosition.PositionId)'); // Select the option with a value of '1'
+
     </script>
 
     <script name="SoloQInit">
@@ -156,14 +170,17 @@
                 change: function () {
                     GetLeagueLogoUrl($("#SoloQSlider").slider("value"), 'SoloQLogoImage');
                     GetDivisionName($("#SoloQSlider").slider("value"), 'SoloQDivisionLabel');
+                    $('#SoloQLeague_LeagueId').attr('value', $("#SoloQSlider").slider("value"));
                 },
                 slide: function () {
                     GetLeagueLogoUrl($("#SoloQSlider").slider("value"), 'SoloQLogoImage');
                     GetDivisionName($("#SoloQSlider").slider("value"), 'SoloQDivisionLabel');
+                    $('#SoloQLeague_LeagueId').attr('value', $("#SoloQSlider").slider("value"));
                 },
                 create: function() {
                     GetLeagueLogoUrl($("#SoloQSlider").slider("value"), 'SoloQLogoImage');
                     GetDivisionName($("#SoloQSlider").slider("value"), 'SoloQDivisionLabel');
+                    $('#SoloQLeague_LeagueId').attr('value', $("#SoloQSlider").slider("value"));
                 }
 
             });
@@ -180,14 +197,17 @@
                 change: function () {
                     GetLeagueLogoUrl($("#FlexSlider").slider("value"), 'FlexLogoImage');
                     GetDivisionName($("#FlexSlider").slider("value"), 'FlexDivisionLabel');
+                    $('#FlexLeague_LeagueId').attr('value', $("#FlexSlider").slider("value"));
                 },
                 slide: function () {
                     GetLeagueLogoUrl($("#FlexSlider").slider("value"), 'FlexLogoImage');
                     GetDivisionName($("#FlexSlider").slider("value"), 'FlexDivisionLabel');
+                    $('#FlexLeague_LeagueId').attr('value', $("#FlexSlider").slider("value"));
                 },
                 create: function() {
                     GetLeagueLogoUrl($("#FlexSlider").slider("value"), 'FlexLogoImage');
                     GetDivisionName($("#FlexSlider").slider("value"), 'FlexDivisionLabel');
+                    $('#FlexLeague_LeagueId').attr('value', $("#FlexSlider").slider("value"));
                 }
 
             });
@@ -204,14 +224,17 @@
                 change: function () {
                     GetLeagueLogoUrl($("#TwistedSlider").slider("value"), 'TwistedLogoImage');
                     GetDivisionName($("#TwistedSlider").slider("value"), 'TwistedDivisionLabel');
+                    $('#League3_LeagueId').attr('value', $("#TwistedSlider").slider("value"));
                 },
                 slide: function () {
                     GetLeagueLogoUrl($("#TwistedSlider").slider("value"), 'TwistedLogoImage');
                     GetDivisionName($("#TwistedSlider").slider("value"), 'TwistedDivisionLabel');
+                    $('#League3_LeagueId').attr('value', $("#TwistedSlider").slider("value"));
                 },
                 create: function() {
                     GetLeagueLogoUrl($("#TwistedSlider").slider("value"), 'TwistedLogoImage');
                     GetDivisionName($("#TwistedSlider").slider("value"), 'TwistedDivisionLabel');
+                    $('#League3_LeagueId').attr('value', $("#TwistedSlider").slider("value"));
                 }
 
             });

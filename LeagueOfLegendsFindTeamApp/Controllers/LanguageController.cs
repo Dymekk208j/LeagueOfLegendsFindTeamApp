@@ -40,8 +40,8 @@ namespace LeagueOfLegendsFindTeamApp.Controllers
                 }
                 else return PartialView("_CreateNewPartialView", language);
             }
-         
-            return PartialView("_TablePartialView", _repository.GetAll());
+
+            return RedirectToAction("GetTable");
         }
 
         [HttpGet]
@@ -69,8 +69,8 @@ namespace LeagueOfLegendsFindTeamApp.Controllers
                 }
                 else return PartialView("_ModificationPartialView", language);
             }
-          
-            return PartialView("_TablePartialView", _repository.GetAll());
+
+            return RedirectToAction("GetTable");
         }
 
         [HttpGet]
@@ -78,7 +78,7 @@ namespace LeagueOfLegendsFindTeamApp.Controllers
         {
            _repository.Remove(languageId);
 
-            return PartialView("_TablePartialView", _repository.GetAll());
+            return RedirectToAction("GetTable");
         }
     }
 }
